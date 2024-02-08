@@ -18,19 +18,26 @@ function settings.generic()
 	vim.opt.autoindent = true
 	-- !-~,^*,^|,^",192-255
 	vim.opt.iskeyword = 'a-z'
-	vim.opt.encoding= 'utf-8'
-	vim.cmd[[colorscheme tokyonight-moon]]
+	vim.opt.encoding = 'utf-8'
+	vim.cmd [[colorscheme tokyonight-moon]]
 end
 
 function settings.keymap()
 	local norkeymap_options = { noremap = true, silent = true };
 	vim.keymap.set('n', 'tt', ':NvimTreeToggle<CR>', norkeymap_options);
-	vim.keymap.set('n', '<S-p>', ':nohlsearch<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-&>', ':nohlsearch<CR>', norkeymap_options);
 	vim.keymap.set('i', 'jk', '<Esc>', nokeymap_options);
 	vim.keymap.set('i', '<UP>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<DOWN>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<LEFT>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<RIGHT>', '<NOP>', nokeymap_options);
+	vim.g.mapleader = ' '
+	local builtin = require('telescope.builtin')
+	vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+	vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+	vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+	vim.keymap.set('n', '<leader>fc', builtin.commands, {})
 end
 
 return settings;

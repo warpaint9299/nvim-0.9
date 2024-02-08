@@ -30,7 +30,7 @@ function nvimtreeSettings.setup()
         signcolumn = "yes",
         width = 30,
         float = {
-          enable = true,
+          enable = false,
           quit_on_focus_loss = true,
           open_win_config = {
             relative = "editor",

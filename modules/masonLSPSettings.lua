@@ -1,14 +1,16 @@
 -- Setup language servers.
 local lspconfig = require('lspconfig')
-lspconfig.pyright.setup {}
-lspconfig.tsserver.setup {}
-lspconfig.rust_analyzer.setup {
+lspconfig.clangd.setup{}
+lspconfig.bashls.setup{}
+lspconfig.lua_ls.setup{}
+lspconfig.ast_grep.setup{}
+lspconfig.vimls.setup{}
+lspconfig.rust_analyzer.setup({
   -- Server-specific settings. See `:help lspconfig-setup`
-  settings = {
+settings = {
     ['rust-analyzer'] = {},
   },
-}
-
+})
 
 -- Global mappings.
 -- See `:help vim.diagnostic.*` for documentation on any of the below functions
