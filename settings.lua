@@ -26,6 +26,8 @@ function settings.keymap()
 	local norkeymap_options = { noremap = true, silent = true };
 	vim.keymap.set('n', 'tt', ':NvimTreeToggle<CR>', norkeymap_options);
 	vim.keymap.set('n', '<S-p>', ':nohlsearch<CR>', norkeymap_options);
+	vim.keymap.set('n', 'fff', ':Format<CR>', norkeymap_options);
+	vim.keymap.set('n', 'FFF', ':FormatWrite<CR>', norkeymap_options);
 	vim.keymap.set('i', 'jk', '<Esc>', nokeymap_options);
 	vim.keymap.set('i', '<UP>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<DOWN>', '<NOP>', nokeymap_options);

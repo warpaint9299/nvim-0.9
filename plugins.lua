@@ -13,6 +13,7 @@ function plugins.setup ()
 		'hrsh7th/nvim-cmp',
 		'hrsh7th/cmp-vsnip',
 		'hrsh7th/vim-vsnip',
+		'mhartington/formatter.nvim',
 		'NvChad/nvim-colorizer.lua',
 		{ 
 			"lukas-reineke/indent-blankline.nvim", main = "ibl", opts = {} 
@@ -44,6 +45,7 @@ function plugins.configure()
 		require("bufferlineSettings"),
 		require("indentSettings"),
 		require("nvimcmpSettings"),
+		require("formatterSettings"),
 		require("colorizerSettings"),
 	}
 end

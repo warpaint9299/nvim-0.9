@@ -10,8 +10,8 @@ local cmp = require("cmp");
 		  end,
 		},
 		window = {
-		  -- completion = cmp.config.window.bordered(),
-		  -- documentation = cmp.config.window.bordered(),
+		   completion = cmp.config.window.bordered(),
+		   documentation = cmp.config.window.bordered(),
 		},
 		mapping = cmp.mapping.preset.insert({
 		  ['<C-b>'] = cmp.mapping.scroll_docs(-4),
@@ -64,10 +64,21 @@ local cmp = require("cmp");
 	local capabilities = require('cmp_nvim_lsp').default_capabilities()
 	-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
 	require('lspconfig')['clangd'].setup {
-		capabilities = capabilities
-	}
-	require('lspconfig')['rust-analyzer'].setup {
-		capabilities = capabilities
-	}
-
+			capabilities = capabilities
+	} 
+	require('lspconfig')['bashls'].setup {
+			capabilities = capabilities
+	} 
+	require('lspconfig')['lua_ls'].setup {
+			capabilities = capabilities
+	} 
+	require('lspconfig')['vimls'].setup {
+			capabilities = capabilities
+	} 
+	require('lspconfig')['ast_grep'].setup {
+			capabilities = capabilities
+	} 
+	require('lspconfig')['rust_analyzer'].setup {
+			capabilities = capabilities
+	} 
 return cmp;
