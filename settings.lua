@@ -1,5 +1,4 @@
 local settings = {}
-
 function settings.generic()
 	vim.opt.history = 10000
 	vim.opt.laststatus = 2
@@ -16,9 +15,8 @@ function settings.generic()
 	vim.opt.splitbelow = true
 	vim.opt.ignorecase = true
 	vim.opt.autoindent = true
-	-- !-~,^*,^|,^",192-255
-	vim.opt.iskeyword = 'a-z'
 	vim.opt.encoding = 'utf-8'
+	vim.opt.iskeyword = 'a-z'
 	vim.cmd [[colorscheme tokyonight-moon]]
 end
 

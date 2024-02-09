@@ -1,4 +1,5 @@
 local plugins = {}
+
 function plugins.setup()
 	return require("lazy").setup({
 		"williamboman/mason.nvim",
@@ -11,9 +12,14 @@ function plugins.setup()
 		'hrsh7th/cmp-path',
 		'hrsh7th/cmp-cmdline',
 		'hrsh7th/nvim-cmp',
-		'hrsh7th/cmp-vsnip',
-		'hrsh7th/vim-vsnip',
 		'NvChad/nvim-colorizer.lua',
+		{
+			"L3MON4D3/LuaSnip",
+			-- follow latest release.
+			version = "v2.2.0", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+			-- install jsregexp (optional!).
+			build = "make install_jsregexp"
+		},
 		{
 			"folke/noice.nvim",
 			event = "VeryLazy",
@@ -73,6 +79,7 @@ function plugins.configure()
 		require("colorizerSettings"),
 		require("telescopeSettings"),
 		require("noiceSettings"),
+		require("luasnipSettings"),
 	}
 end
 
