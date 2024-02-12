@@ -18,12 +18,19 @@ function settings.generic()
 	vim.opt.encoding = 'utf-8'
 	vim.opt.iskeyword = 'a-z'
 	vim.cmd [[colorscheme tokyonight-moon]]
+	vim.cmd([[
+	augroup RememberCursorPosition
+	  autocmd!
+	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+	augroup END
+	]])
+
 end
 
 function settings.keymap()
 	local norkeymap_options = { noremap = true, silent = true };
 	vim.keymap.set('n', 'tt', ':NvimTreeToggle<CR>', norkeymap_options);
-	vim.keymap.set('n', '<S-&>', ':nohlsearch<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-c>', ':nohlsearch<CR>', norkeymap_options);
 	vim.keymap.set('i', 'jk', '<Esc>', nokeymap_options);
 	vim.keymap.set('i', '<UP>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<DOWN>', '<NOP>', nokeymap_options);

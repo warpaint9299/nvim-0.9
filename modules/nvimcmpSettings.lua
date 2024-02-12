@@ -78,9 +78,9 @@ require('lspconfig')['lua_ls'].setup {
 require('lspconfig')['vimls'].setup {
 	capabilities = capabilities
 }
-require('lspconfig')['ast_grep'].setup {
-	capabilities = capabilities
-}
+-- require('lspconfig')['ast_grep'].setup {
+--	capabilities = capabilities
+-- }
 require('lspconfig')['rust_analyzer'].setup {
 	capabilities = capabilities
 }

@@ -38,9 +38,6 @@ function plugins.setup()
 		{
 			"https://git.sr.ht/~nedia/auto-format.nvim",
 			event = "BufWinEnter",
-			config = function()
-				require("auto-format").setup()
-			end
 		},
 		{
 			'nvim-telescope/telescope.nvim',
@@ -75,11 +72,11 @@ function plugins.configure()
 		require("nvimtreeSettings").generic_attr(),
 		require("bufferlineSettings"),
 		require("nvimcmpSettings"),
-		require("autoformatSettings"),
 		require("colorizerSettings"),
 		require("telescopeSettings"),
 		require("noiceSettings"),
 		require("luasnipSettings"),
+		-- require("autoformatSettings"),
 	}
 end
 
