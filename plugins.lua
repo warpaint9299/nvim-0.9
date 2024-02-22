@@ -22,10 +22,6 @@ function plugins.setup()
 		},
 		{
 			"folke/noice.nvim",
-			event = "VeryLazy",
-			opts = {
-				-- add any options here
-			},
 			dependencies = {
 				-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
 				"MunifTanjim/nui.nvim",
@@ -74,9 +70,9 @@ function plugins.configure()
 		require("nvimcmpSettings"),
 		require("colorizerSettings"),
 		require("telescopeSettings"),
-		require("noiceSettings"),
 		require("luasnipSettings"),
-		-- require("autoformatSettings"),
+--		require("noiceSettings"),
+-- 		require("autoformatSettings"),
 	}
 end
 

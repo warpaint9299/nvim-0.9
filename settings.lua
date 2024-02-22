@@ -4,7 +4,7 @@ function settings.generic()
 	vim.opt.laststatus = 2
 	vim.opt.tabstop = 4
 	vim.opt.shiftwidth = 4
-	vim.opt.number = true
+	vim.opt.number = false
 	vim.opt.relativenumber = true
 	vim.opt.cursorline = true
 	vim.opt.cursorcolumn = true
@@ -13,10 +13,11 @@ function settings.generic()
 	vim.opt.cursorline = true
 	vim.opt.splitright = true
 	vim.opt.splitbelow = true
-	vim.opt.ignorecase = true
+	vim.opt.ignorecase = false
 	vim.opt.autoindent = true
 	vim.opt.encoding = 'utf-8'
-	vim.opt.iskeyword = 'a-z'
+	vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
+--	vim.opt.iskeyword = 'a-z'
 	vim.cmd [[colorscheme tokyonight-moon]]
 	vim.cmd([[
 	augroup RememberCursorPosition
@@ -29,8 +30,6 @@ end
 
 function settings.keymap()
 	local norkeymap_options = { noremap = true, silent = true };
-	vim.keymap.set('n', 'tt', ':NvimTreeToggle<CR>', norkeymap_options);
-	vim.keymap.set('n', '<S-c>', ':nohlsearch<CR>', norkeymap_options);
 	vim.keymap.set('i', 'jk', '<Esc>', nokeymap_options);
 	vim.keymap.set('i', '<UP>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<DOWN>', '<NOP>', nokeymap_options);
@@ -38,11 +37,14 @@ function settings.keymap()
 	vim.keymap.set('i', '<RIGHT>', '<NOP>', nokeymap_options);
 	vim.g.mapleader = ' '
 	local builtin = require('telescope.builtin')
+	vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', {});
+	vim.keymap.set('n', '<leader>s', ':nohlsearch<CR>', {});
 	vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 	vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 	vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 	vim.keymap.set('n', '<leader>fc', builtin.commands, {})
+	
 end
 
 return settings;
