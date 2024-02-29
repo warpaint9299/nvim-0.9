@@ -10,7 +10,7 @@ return {
 		timeout = 2000,
 
 		-- These filetypes will not be formatted automatically.
-		exclude_ft = { "c", "md" },
+		exclude_ft = { "c", "h", "def.h", "cpp", "md" },
 
 		-- Prefer formatting via LSP for these filetypes.
 		prefer_lsp = {},
