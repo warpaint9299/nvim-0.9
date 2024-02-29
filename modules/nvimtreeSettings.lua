@@ -70,7 +70,7 @@ function nvimtreeSettings.setup()
         icons = {
           web_devicons = {
             file = {
-              enable = false,
+              enable = true,
               color = true,
             },
             folder = {

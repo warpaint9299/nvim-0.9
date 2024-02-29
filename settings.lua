@@ -16,8 +16,9 @@ function settings.generic()
 	vim.opt.ignorecase = false
 	vim.opt.autoindent = true
 	vim.opt.encoding = 'utf-8'
+	vim.opt.encoding = 'utf-8'
 	vim.opt.clipboard:append { 'unnamed', 'unnamedplus' }
---	vim.opt.iskeyword = 'a-z'
+	--	vim.opt.iskeyword = 'a-z'
 	vim.cmd [[colorscheme tokyonight-moon]]
 	vim.cmd([[
 	augroup RememberCursorPosition
@@ -25,7 +26,6 @@ function settings.generic()
 	  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 	augroup END
 	]])
-
 end
 
 function settings.keymap()

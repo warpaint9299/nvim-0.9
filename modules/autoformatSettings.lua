@@ -1,18 +1,18 @@
 return {
-require("auto-format").setup({
-  -- The name of the augroup.
-  augroup_name = "AutoFormat",
+	require("auto-format").setup({
+		-- The name of the augroup.
+		augroup_name = "AutoFormat",
 
-  -- If formatting takes longer than this amount of time, it will fail. Having no
-  -- timeout at all tends to be ugly - larger files, complex or poor formatters
-  -- will struggle to format within whatever the default timeout
-  -- `vim.lsp.buf.format` uses.
-  timeout = 2000,
+		-- If formatting takes longer than this amount of time, it will fail. Having no
+		-- timeout at all tends to be ugly - larger files, complex or poor formatters
+		-- will struggle to format within whatever the default timeout
+		-- `vim.lsp.buf.format` uses.
+		timeout = 2000,
 
-  -- These filetypes will not be formatted automatically.
-  exclude_ft = {},
+		-- These filetypes will not be formatted automatically.
+		exclude_ft = { "c", "md" },
 
-  -- Prefer formatting via LSP for these filetypes.
-  prefer_lsp = {},
-})
+		-- Prefer formatting via LSP for these filetypes.
+		prefer_lsp = {},
+	})
 }

@@ -5,14 +5,38 @@ function plugins.setup()
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"kyazdani42/nvim-web-devicons",
 		"NTBBloodbath/galaxyline.nvim",
-		'hrsh7th/cmp-nvim-lsp',
-		'hrsh7th/cmp-buffer',
-		'hrsh7th/cmp-path',
-		'hrsh7th/cmp-cmdline',
-		'hrsh7th/nvim-cmp',
-		'NvChad/nvim-colorizer.lua',
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/nvim-cmp",
+		"NvChad/nvim-colorizer.lua",
+		"chentoast/marks.nvim",
+		"gennaro-tedesco/nvim-peekup",
+		"petertriho/nvim-scrollbar",
+		{
+			"windwp/nvim-autopairs",
+			event = "InsertEnter",
+			config = true
+			-- use opts = {} for passing setup options
+			-- this is equalent to setup({}) function
+		},
+		{
+			"utilyre/barbecue.nvim",
+			name = "barbecue",
+			dependencies = {
+				"SmiteshP/nvim-navic",
+				"nvim-tree/nvim-web-devicons"
+			},
+			version = "v1.2.0",
+		},
+		{
+			"iamcco/markdown-preview.nvim",
+			cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+			ft = { "markdown" },
+			build = function() vim.fn["mkdp#util#install"]() end,
+		},
 		{
 			"L3MON4D3/LuaSnip",
 			-- follow latest release.
@@ -71,8 +95,11 @@ function plugins.configure()
 		require("colorizerSettings"),
 		require("telescopeSettings"),
 		require("luasnipSettings"),
---		require("noiceSettings"),
--- 		require("autoformatSettings"),
+		require("dropbarSettings"),
+		require("marksSettings"),
+		require("scrollbarSettings"),
+		require("autoformatSettings"),
+		require("noiceSettings"),
 	}
 end
 
