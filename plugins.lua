@@ -99,7 +99,7 @@ function plugins.configure()
 		require("marksSettings"),
 		require("scrollbarSettings"),
 		require("autoformatSettings"),
-		require("noiceSettings"),
+		--		require("noiceSettings"),
 	}
 end
 
