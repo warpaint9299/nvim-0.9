@@ -36,19 +36,21 @@ function settings.keymap()
 	vim.keymap.set('i', '<LEFT>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<RIGHT>', '<NOP>', nokeymap_options);
 	-- keys of split window
+	vim.keymap.set('n', 'sp', ':split', {});
+	vim.keymap.set('n', 'vsp', ':vertical split', {});
 	vim.keymap.set('n', '<A-UP>', ':horizontal resize +5<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-DOWN>', ':horizontal resize -5<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-RIGHT>', ':vertical resize -10<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-LEFT>', ':vertical resize +10<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-UP>', ':close<CR>:topleft split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-DOWN>', ':close<CR>:botright split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-LEFT>', ':close<CR>:vertical topleft split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-RIGHT>', ':close<CR>:vertical botright split<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-UP>', ':let @p=@%<CR>:close<CR>:topleft split <C-r>p<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-DOWN>', ':let @p=@%<CR>:close<CR>:botright split <C-r>p<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-LEFT>', ':let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-RIGHT>', ':let @p=@%<CR>:close<CR>:vertical botright split <C-r>p<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-UP>', ':topleft split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-DOWN>', ':botright split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-LEFT>', ':vertical topleft split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-RIGHT>', ':vertical botright split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-c>', ':close<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-c>', ':close<CR>', norkeymap_options);
 	vim.keymap.set('v', '<C-c>', 'y"*', norkeymap_options);
 	-- reset default register of keys to avoid overwrite system clipboard
 	vim.keymap.set('n', 'x', '"xx', norkeymap_options);
