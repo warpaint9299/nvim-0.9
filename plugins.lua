@@ -15,6 +15,13 @@ function plugins.setup()
 		"chentoast/marks.nvim",
 		"gennaro-tedesco/nvim-peekup",
 		"petertriho/nvim-scrollbar",
+		"simrat39/symbols-outline.nvim",
+		{
+			"smjonas/inc-rename.nvim",
+			config = function()
+				require("inc_rename").setup()
+			end,
+		},
 		{
 			"windwp/nvim-autopairs",
 			event = "InsertEnter",
@@ -100,6 +107,7 @@ function plugins.configure()
 		require("scrollbarSettings"),
 		require("autoformatSettings"),
 		require("noiceSettings"),
+		require("symbolsOutlineSettings")
 	}
 end
 

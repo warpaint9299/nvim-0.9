@@ -11,7 +11,6 @@ function settings.generic()
 	vim.opt.cursorcolumn = true
 	vim.opt.hlsearch = true
 	vim.opt.showcmd = true
-	vim.opt.cursorline = true
 	vim.opt.splitright = true
 	vim.opt.splitbelow = true
 	vim.opt.ignorecase = false
@@ -44,7 +43,7 @@ function settings.keymap()
 	vim.keymap.set('n', '<A-LEFT>', ':vertical resize +10<CR>', norkeymap_options);
 	vim.keymap.set('n', '<C-UP>', ':let @p=@%<CR>:close<CR>:topleft split <C-r>p<CR>', norkeymap_options);
 	vim.keymap.set('n', '<C-DOWN>', ':let @p=@%<CR>:close<CR>:botright split <C-r>p<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-LEFT>', ':let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-LEFT>', ':let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>', norkrrmap_options);
 	vim.keymap.set('n', '<C-RIGHT>', ':let @p=@%<CR>:close<CR>:vertical botright split <C-r>p<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-UP>', ':topleft split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-DOWN>', ':botright split<CR>', norkeymap_options);
@@ -52,6 +51,7 @@ function settings.keymap()
 	vim.keymap.set('n', '<A-S-RIGHT>', ':vertical botright split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<S-c>', ':close<CR>', norkeymap_options);
 	vim.keymap.set('v', '<C-c>', 'y"*', norkeymap_options);
+	vim.keymap.set('n', 'rr', ':IncRename', {});
 	-- reset default register of keys to avoid overwrite system clipboard
 	vim.keymap.set('n', 'x', '"xx', norkeymap_options);
 	vim.keymap.set('v', 'x', '"xx', norkeymap_options);
@@ -63,8 +63,9 @@ function settings.keymap()
 	vim.keymap.set('v', 'c', '"cc', norkeymap_options);
 	vim.g.mapleader = ' '
 	local builtin = require('telescope.builtin')
-	vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', {});
-	vim.keymap.set('n', '<leader>s', ':nohlsearch<CR>', {});
+	vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', norkeymap_options);
+	vim.keymap.set('n', '<leader>ss', ':SymbolsOutline<CR>', norkeymap_options);
+	vim.keymap.set('n', '<leader>s', ':nohlsearch<CR>', norkeymap_options);
 	vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 	vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
