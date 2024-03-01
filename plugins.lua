@@ -17,6 +17,12 @@ function plugins.setup()
 		"petertriho/nvim-scrollbar",
 		"simrat39/symbols-outline.nvim",
 		"mhartington/formatter.nvim",
+		"rmagatti/goto-preview",
+		{
+			"nvim-telescope/telescope.nvim",
+			tag = "0.1.5",
+			dependencies = { "nvim-lua/plenary.nvim" },
+		},
 		{
 			"ray-x/lsp_signature.nvim",
 			event = "VeryLazy",
@@ -82,13 +88,14 @@ function plugins.configure()
 		require("bufferlineSettings"),
 		require("nvimcmpSettings"),
 		require("colorizerSettings"),
-		require("luasnipSettings"),
+		require("luaSnipSettings"),
 		require("dropbarSettings"),
 		require("marksSettings"),
 		require("scrollbarSettings"),
 		require("symbolsOutlineSettings"),
 		require("lspSignatureSettings"),
 		require("autoFormatterSettings"),
+		require("gotoPreviewSettings"),
 	}
 end
 

@@ -41,10 +41,10 @@ function settings.keymap()
 	vim.keymap.set('n', '<A-DOWN>', ':horizontal resize -5<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-RIGHT>', ':vertical resize -10<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-LEFT>', ':vertical resize +10<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-UP>', ':let @p=@%<CR>:close<CR>:topleft split <C-r>p<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-DOWN>', ':let @p=@%<CR>:close<CR>:botright split <C-r>p<CR>', norkeymap_options);
-	vim.keymap.set('n', '<C-LEFT>', ':let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>', norkrrmap_options);
-	vim.keymap.set('n', '<C-RIGHT>', ':let @p=@%<CR>:close<CR>:vertical botright split <C-r>p<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-UP>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:topleft split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-DOWN>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:botright split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkeymap_options);
+	vim.keymap.set('n', '<C-LEFT>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkrrmap_options);
+	vim.keymap.set('n', '<C-RIGHT>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:vertical botright split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-UP>', ':topleft split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-DOWN>', ':botright split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<A-S-LEFT>', ':vertical topleft split<CR>', norkeymap_options);
