@@ -1,7 +1,5 @@
-local nvimtreeSettings = {};
-
-function nvimtreeSettings.setup()
-	return require("nvim-tree").setup({
+local nvimtreeSettings = {
+	require("nvim-tree").setup({
       on_attach = "default",
       hijack_cursor = false,
       auto_reload_on_write = true,
@@ -257,13 +255,11 @@ function nvimtreeSettings.setup()
           watcher = false,
         },
       },
-	})
-end
+	});
+}
 
-function nvimtreeSettings.generic_attr()
   vim.g.loaded_netrw = 1
   vim.g.loaded_netrwPlugin = 1
-end
 
 return nvimtreeSettings;
 

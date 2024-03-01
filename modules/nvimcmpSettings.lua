@@ -1,13 +1,9 @@
 local cmp = require("cmp");
-
 cmp.setup({
 	snippet = {
 		-- REQUIRED - you must specify a snippet engine
 		expand = function(args)
 			require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
-			-- vim.fn["vsnip#anonymous"](args.body) -- For `vsnip` users.
-			-- require('snippy').expand_snippet(args.body) -- For `snippy` users.
-			-- vim.fn["UltiSnips#Anon"](args.body) -- For `ultisnips` users.
 		end,
 	},
 	window = {
@@ -17,18 +13,13 @@ cmp.setup({
 	mapping = cmp.mapping.preset.insert({
 		['<C-b>'] = cmp.mapping.scroll_docs(-4),
 		['<C-f>'] = cmp.mapping.scroll_docs(4),
-		['<C-Space>'] = cmp.mapping.complete(),
-		['<C-e>'] = cmp.mapping.abort(),
-		['<CR>'] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 		['<Tab>'] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
 		['<S-Tab>'] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
+		['<CR>'] = cmp.mapping.confirm({ select = true }),                                                                                -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
 	}),
 	sources = cmp.config.sources({
 		{ name = 'nvim_lsp' },
 		{ name = 'luasnip' }, -- For luasnip users.
-		--{ name = 'vsnip' }, -- For vsnip users.
-		-- { name = 'ultisnips' }, -- For ultisnips users.
-		-- { name = 'snippy' }, -- For snippy users.
 	}, {
 		{ name = 'buffer' },
 	})
@@ -78,9 +69,6 @@ require('lspconfig')['lua_ls'].setup {
 require('lspconfig')['vimls'].setup {
 	capabilities = capabilities
 }
--- require('lspconfig')['ast_grep'].setup {
---	capabilities = capabilities
--- }
 require('lspconfig')['rust_analyzer'].setup {
 	capabilities = capabilities
 }

@@ -147,5 +147,4 @@ local scrollbar = {
 	})
 }
 
-
 return scrollbar

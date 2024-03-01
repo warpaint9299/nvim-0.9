@@ -51,26 +51,19 @@ function settings.keymap()
 	vim.keymap.set('n', '<A-S-RIGHT>', ':vertical botright split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<S-c>', ':close<CR>', norkeymap_options);
 	vim.keymap.set('v', '<C-c>', 'y"*', norkeymap_options);
-	vim.keymap.set('n', 'rr', ':IncRename', {});
 	-- reset default register of keys to avoid overwrite system clipboard
-	vim.keymap.set('n', 'x', '"xx', norkeymap_options);
-	vim.keymap.set('v', 'x', '"xx', norkeymap_options);
-	vim.keymap.set('n', 'd', '"dd', norkeymap_options);
-	vim.keymap.set('v', 'd', '"dd', norkeymap_options);
-	vim.keymap.set('n', 's', '"ss', norkeymap_options);
-	vim.keymap.set('v', 's', '"ss', norkeymap_options);
-	vim.keymap.set('n', 'c', '"cc', norkeymap_options);
-	vim.keymap.set('v', 'c', '"cc', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'x', '"xx', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'd', '"dd', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 's', '"ss', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'c', '"cc', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'px', '"xp', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'pd', '"dp', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'ps', '"sp', norkeymap_options);
+	vim.keymap.set({ 'n', 'v' }, 'pc', '"cp', norkeymap_options);
 	vim.g.mapleader = ' '
-	local builtin = require('telescope.builtin')
 	vim.keymap.set('n', '<leader>tt', ':NvimTreeToggle<CR>', norkeymap_options);
 	vim.keymap.set('n', '<leader>ss', ':SymbolsOutline<CR>', norkeymap_options);
-	vim.keymap.set('n', '<leader>s', ':nohlsearch<CR>', norkeymap_options);
-	vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-	vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-	vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-	vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-	vim.keymap.set('n', '<leader>fc', builtin.commands, {})
+	vim.keymap.set('n', '<leader>f', ':Format<CR>', norkeymap_options);
 end
 
 return settings;
