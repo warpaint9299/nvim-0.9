@@ -30,8 +30,26 @@ return require("formatter").setup({
 				return {
 					exe = "clang-format",
 					args = {
-						"-style='{ BasedOnStyle: GNU, IndentWidth: 4 }'",
+						"-style='{ BasedOnStyle: LLVM , IndentWidth: 4, AlwaysBreakAfterReturnType: AllDefinitions, BreakBeforeBraces: Allman, BreakBeforeTernaryOperators: true, BreakStringLiterals: true, ColumnLimit: 0, FixNamespaceComments: true, IndentCaseBlocks: true, IndentCaseLabels: true, IndentGotoLabels: true, BitFieldColonSpacing: Both, AllowShortIfStatementsOnASingleLine: WithoutElse, AllowShortEnumsOnASingleLine: true, AllowShortBlocksOnASingleLine: Always, AlignConsecutiveMacros: { Enabled: true, AcrossEmptyLines: true, AlignCompound: true, PadOperators: true }, AlignConsecutiveShortCaseStatements: { Enabled: true, AcrossEmptyLines: true, AlignCaseColons: true }, AlignTrailingComments: { Kind: Always, OverEmptyLines: 1 }, AlignOperands: AlignAfterOperator, BreakBeforeBinaryOperators: All, RemoveBracesLLVM: true }'",
 					},
+					stdin = true,
+				}
+			end,
+		},
+		yaml = {
+			function()
+				return {
+					exe = "",
+					args = {},
+					stdin = true,
+				}
+			end,
+		},
+		markdown = {
+			function()
+				return {
+					exe = "",
+					args = {},
 					stdin = true,
 				}
 			end,
