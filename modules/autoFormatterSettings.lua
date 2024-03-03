@@ -36,11 +36,24 @@ return require("formatter").setup({
 				}
 			end,
 		},
+		json = {
+			function()
+				return {
+					exe = "prettier",
+					args = {
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
+					stdin = true,
+				}
+			end,
+		},
 		yaml = {
 			function()
 				return {
-					exe = "",
-					args = {},
+					exe = "prettier",
+					args = {
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
 					stdin = true,
 				}
 			end,
@@ -48,8 +61,10 @@ return require("formatter").setup({
 		markdown = {
 			function()
 				return {
-					exe = "",
-					args = {},
+					exe = "prettier",
+					args = {
+						util.escape_path(util.get_current_buffer_file_path()),
+					},
 					stdin = true,
 				}
 			end,

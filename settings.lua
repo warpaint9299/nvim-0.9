@@ -34,6 +34,11 @@ function settings.keymap()
 	vim.keymap.set('i', '<DOWN>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<LEFT>', '<NOP>', nokeymap_options);
 	vim.keymap.set('i', '<RIGHT>', '<NOP>', nokeymap_options);
+	vim.keymap.set('i', '<C-b>', '<C-h>', nokeymap_options);
+	vim.keymap.set('i', '<C-h>', '<LEFT>', nokeymap_options);
+	vim.keymap.set('i', '<C-l>', '<RIGHT>', nokeymap_options);
+	vim.keymap.set('i', '<C-j>', '<DOWN>', nokeymap_options);
+	vim.keymap.set('i', '<C-k>', '<UP>', nokeymap_options);
 	-- keys of split window
 	vim.keymap.set('n', 'sp', ':split', {});
 	vim.keymap.set('n', 'vsp', ':vertical split', {});
