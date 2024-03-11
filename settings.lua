@@ -9,7 +9,7 @@ function settings.generic()
 	vim.opt.relativenumber = true
 	vim.opt.cursorline = true
 	vim.opt.cursorcolumn = true
-	vim.opt.hlsearch = true
+	vim.opt.hlsearch = false
 	vim.opt.showcmd = true
 	vim.opt.splitright = true
 	vim.opt.splitbelow = true
