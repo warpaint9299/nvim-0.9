@@ -50,12 +50,14 @@ function settings.keymap()
 	vim.keymap.set('n', '<C-DOWN>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:botright split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkeymap_options);
 	vim.keymap.set('n', '<C-LEFT>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:vertical topleft split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkrrmap_options);
 	vim.keymap.set('n', '<C-RIGHT>', ':let @r=line(".")<CR>:let @c=col(".")<CR>:let @p=@%<CR>:close<CR>:vertical botright split <C-r>p<CR>:<C-r>r<CR>:normal <C-r>c|<CR>', norkeymap_options);
-	vim.keymap.set('n', '<A-S-UP>', ':topleft split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<A-S-DOWN>', ':botright split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<A-S-LEFT>', ':vertical topleft split<CR>', norkeymap_options);
-	vim.keymap.set('n', '<A-S-RIGHT>', ':vertical botright split<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-UP>', ':topleft split<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-DOWN>', ':botright split<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-LEFT>', ':vertical topleft split<CR>', norkeymap_options);
+	vim.keymap.set('n', '<S-RIGHT>', ':vertical botright split<CR>', norkeymap_options);
 	vim.keymap.set('n', '<S-c>', ':close<CR>', norkeymap_options);
+	vim.keymap.set('n', 'p', '"*p', norkeymap_options);
 	vim.keymap.set('v', '<C-c>', 'y"*', norkeymap_options);
+
 	-- reset default register of keys to avoid overwrite system clipboard
 	vim.keymap.set({ 'n', 'v' }, 'x', '"xx', norkeymap_options);
 	vim.keymap.set({ 'n', 'v' }, 'd', '"dd', norkeymap_options);
