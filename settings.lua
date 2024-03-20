@@ -18,7 +18,8 @@ function settings.generic()
 	vim.opt.encoding = "utf-8"
 	vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 	--	vim.opt.iskeyword = 'a-z'
-	vim.cmd([[colorscheme tokyonight-moon]])
+	--	vim.cmd([[colorscheme tokyonight-moon]])
+	vim.cmd([[colorscheme gruvbox]])
 	vim.cmd([[
 	augroup RememberCursorPosition
 	  autocmd!
