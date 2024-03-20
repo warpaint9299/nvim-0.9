@@ -5,7 +5,6 @@ function plugins.setup()
 		"williamboman/mason.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"neovim/nvim-lspconfig",
-		"NTBBloodbath/galaxyline.nvim",
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
@@ -18,6 +17,8 @@ function plugins.setup()
 		"simrat39/symbols-outline.nvim",
 		"mhartington/formatter.nvim",
 		"rmagatti/goto-preview",
+		"vim-airline/vim-airline",
+		"vim-airline/vim-airline-themes",
 		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.5",
@@ -88,7 +89,6 @@ function plugins.configure()
 	return {
 		require("masonSettings"),
 		require("masonLSPSettings"),
-		require("galaxylineSettings"),
 		require("nvimtreeSettings"),
 		require("bufferlineSettings"),
 		require("nvimcmpSettings"),
