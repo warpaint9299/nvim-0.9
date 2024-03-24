@@ -22,9 +22,16 @@ function settings.generic()
 	--	vim.cmd([[colorscheme tokyonight-moon]])
 	vim.cmd([[colorscheme gruvbox]])
 	vim.cmd([[
+				augroup Miscellaneous
+					autocmd!
+					autocmd FileType markdown,text set laststatus=0
+					autocmd InsertLeavePre *.md,*.text write
+				augroup END
+			]])
+	vim.cmd([[
 				augroup RememberCursorPosition
-				  autocmd!
-				  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
+					autocmd!
+					autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 				augroup END
 			]])
 	vim.cmd([[
