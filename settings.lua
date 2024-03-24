@@ -17,19 +17,17 @@ function settings.generic()
 	vim.opt.autoindent = true
 	vim.opt.encoding = "utf-8"
 	vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
+	vim.opt.mousemodel = ""
 	--	vim.opt.iskeyword = 'a-z'
 	--	vim.cmd([[colorscheme tokyonight-moon]])
 	vim.cmd([[colorscheme gruvbox]])
-	vim.cmd(
-			[[
+	vim.cmd([[
 				augroup RememberCursorPosition
 				  autocmd!
 				  autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal! g`\"" | endif
 				augroup END
-			]]
-	)
-	vim.cmd(
-			[[
+			]])
+	vim.cmd([[
 				let g:term_buf = 0
 				let g:term_win = 0
 				function! TermToggle(height)
@@ -59,8 +57,7 @@ function settings.generic()
 				" Terminal go back to normal mode
 				tnoremap <Esc> <C-\><C-n>
 				tnoremap :q! <C-\><C-n>:q!<CR>
-			]]
-	)
+			]])
 end
 
 function settings.keymap()
@@ -124,7 +121,6 @@ function settings.keymap()
 	vim.keymap.set("n", "<leader>tt", ":NvimTreeToggle<CR>", norkeymap_options)
 	vim.keymap.set("n", "<leader>ss", ":SymbolsOutline<CR>", norkeymap_options)
 	vim.keymap.set("n", "<leader>f", ":Format<CR>", norkeymap_options)
-	vim.keymap.set("c", ":Term", ":<CR>", norkeymap_options)
 end
 
 return settings

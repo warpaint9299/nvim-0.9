@@ -20,6 +20,15 @@ function plugins.setup()
 		"vim-airline/vim-airline",
 		"vim-airline/vim-airline-themes",
 		{
+			"ibhagwan/fzf-lua",
+			-- optional for icon support
+			dependencies = { "nvim-tree/nvim-web-devicons" },
+			config = function()
+				-- calling `setup` is optional for customization
+				require("fzf-lua").setup({})
+			end,
+		},
+		{
 			"nvim-telescope/telescope.nvim",
 			tag = "0.1.5",
 			dependencies = { "nvim-lua/plenary.nvim" },
@@ -90,7 +99,6 @@ function plugins.configure()
 		require("masonSettings"),
 		require("masonLSPSettings"),
 		require("nvimtreeSettings"),
-		require("bufferlineSettings"),
 		require("nvimcmpSettings"),
 		require("colorizerSettings"),
 		require("luaSnipSettings"),
@@ -100,7 +108,7 @@ function plugins.configure()
 		require("symbolsOutlineSettings"),
 		require("lspSignatureSettings"),
 		require("autoFormatterSettings"),
-		require("gotoPreviewSettings"),
+		require("fzfSettings"),
 	}
 end
 
