@@ -16,7 +16,6 @@ function plugins.setup()
 		"petertriho/nvim-scrollbar",
 		"simrat39/symbols-outline.nvim",
 		"mhartington/formatter.nvim",
-		"rmagatti/goto-preview",
 		"vim-airline/vim-airline",
 		"vim-airline/vim-airline-themes",
 		{
@@ -27,11 +26,6 @@ function plugins.setup()
 				-- calling `setup` is optional for customization
 				require("fzf-lua").setup({})
 			end,
-		},
-		{
-			"nvim-telescope/telescope.nvim",
-			tag = "0.1.5",
-			dependencies = { "nvim-lua/plenary.nvim" },
 		},
 		{
 			"ray-x/lsp_signature.nvim",
