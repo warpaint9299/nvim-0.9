@@ -19,6 +19,10 @@ function plugins.setup()
 		"vim-airline/vim-airline",
 		"vim-airline/vim-airline-themes",
 		{
+			"niuiic/translate.nvim",
+			dependencies = { "niuiic/core.nvim" },
+		},
+		{
 			"Wansmer/symbol-usage.nvim",
 			event = "LspAttach", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
 		},
@@ -104,6 +108,7 @@ function plugins.configure()
 		require("autoFormatterSettings"),
 		require("fzfLuaSettings"),
 		require("symbolUsageSettings"),
+		require("translateSettings"),
 	}
 end
 
