@@ -19,13 +19,13 @@ function plugins.setup()
 		"vim-airline/vim-airline",
 		"vim-airline/vim-airline-themes",
 		{
+			"Wansmer/symbol-usage.nvim",
+			event = "LspAttach", -- need run before LspAttach if you use nvim 0.9. On 0.10 use 'LspAttach'
+		},
+		{
 			"ibhagwan/fzf-lua",
 			-- optional for icon support
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = function()
-				-- calling `setup` is optional for customization
-				require("fzf-lua").setup({})
-			end,
 		},
 		{
 			"ray-x/lsp_signature.nvim",
@@ -102,7 +102,8 @@ function plugins.configure()
 		require("symbolsOutlineSettings"),
 		require("lspSignatureSettings"),
 		require("autoFormatterSettings"),
-		require("fzfSettings"),
+		require("fzfLuaSettings"),
+		require("symbolUsageSettings"),
 	}
 end
 
