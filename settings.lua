@@ -16,16 +16,20 @@ function settings.generic()
 	vim.opt.ignorecase = false
 	vim.opt.autoindent = true
 	vim.opt.encoding = "utf-8"
+	vim.opt.background = "dark"
 	vim.opt.clipboard:append({ "unnamed", "unnamedplus" })
 	vim.opt.mousemodel = ""
 	--	vim.opt.iskeyword = 'a-z'
 	--	vim.cmd([[colorscheme tokyonight-moon]])
-	vim.cmd([[colorscheme gruvbox]])
+	vim.cmd([[
+				colorscheme gruvbox
+			]])
 	vim.cmd([[
 				augroup Miscellaneous
 					autocmd!
 					autocmd FileType markdown,text set laststatus=0
 					autocmd InsertLeavePre *.md,*.text write
+					autocmd BufReadPre * AirlineTheme base16_gruvbox_dark_hard
 				augroup END
 			]])
 	vim.cmd([[
