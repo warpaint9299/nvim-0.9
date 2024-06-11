@@ -13,11 +13,11 @@ function plugins.setup()
 		"NvChad/nvim-colorizer.lua",
 		"chentoast/marks.nvim",
 		"gennaro-tedesco/nvim-peekup",
-		"petertriho/nvim-scrollbar",
 		"simrat39/symbols-outline.nvim",
 		"mhartington/formatter.nvim",
 		"vim-airline/vim-airline",
 		"vim-airline/vim-airline-themes",
+		"onsails/lspkind.nvim",
 		{
 			"niuiic/translate.nvim",
 			dependencies = { "niuiic/core.nvim" },
@@ -89,12 +89,51 @@ function plugins.setup()
 			lazy = false,
 			priority = 1000,
 		},
+		{
+			"HakonHarnes/img-clip.nvim",
+			event = "VeryLazy",
+			opts = {
+				-- add options here
+				-- or leave it empty to use the default settings
+			},
+			keys = {
+				-- suggested keymap
+				{ "<leader>p", "<cmd>PasteImage<cr>", desc = "Paste image from system clipboard" },
+			},
+		},
+		{
+			"j-hui/fidget.nvim", -- lsp status display in corner down of right
+		},
+		{
+			"nvim-java/nvim-java",
+			dependencies = {
+				"nvim-java/lua-async-await",
+				"nvim-java/nvim-java-refactor",
+				"nvim-java/nvim-java-core",
+				"nvim-java/nvim-java-test",
+				"nvim-java/nvim-java-dap",
+				"MunifTanjim/nui.nvim",
+				"neovim/nvim-lspconfig",
+				"mfussenegger/nvim-dap",
+				{
+					"williamboman/mason.nvim",
+					opts = {
+						registries = {
+							"github:nvim-java/mason-registry",
+							"github:mason-org/mason-registry",
+						},
+					},
+				},
+			},
+			config = function()
+				require("java").setup()
+			end,
+		},
 	})
 end
 
 function plugins.configure()
 	return {
-		require("masonSettings"),
 		require("masonLSPSettings"),
 		require("nvimtreeSettings"),
 		require("nvimcmpSettings"),
@@ -102,13 +141,14 @@ function plugins.configure()
 		require("luaSnipSettings"),
 		require("dropbarSettings"),
 		require("marksSettings"),
-		require("scrollbarSettings"),
 		require("symbolsOutlineSettings"),
 		require("lspSignatureSettings"),
 		require("autoFormatterSettings"),
 		require("fzfLuaSettings"),
 		require("symbolUsageSettings"),
 		require("translateSettings"),
+		require("lspkindSettings"),
+		require("fidgetSettings"),
 	}
 end
 
