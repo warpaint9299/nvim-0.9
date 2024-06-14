@@ -1,0 +1,23 @@
+vim.g.mapleader = " "
+vim.g.autoformat = true
+local opt = vim.opt
+opt.autowrite = true
+opt.history = 10000
+opt.laststatus = 0
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.number = false
+opt.relativenumber = true
+opt.cursorline = true
+opt.cursorcolumn = true
+opt.hlsearch = true
+opt.showcmd = true
+opt.splitright = true
+opt.splitbelow = true
+opt.ignorecase = false
+opt.autoindent = true
+opt.encoding = "utf-8"
+opt.background = "dark"
+opt.mousemodel = ""
+-- opt.clipboard:append({ "unnamed", "unnamedplus" })
+-- vim.opt.iskeyword = 'a-z'
