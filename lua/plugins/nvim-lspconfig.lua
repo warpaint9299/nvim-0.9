@@ -5,5 +5,7 @@ return {
 		require("lspconfig").lua_ls.setup({})
 		require("lspconfig").vimls.setup({})
 		require("lspconfig").jdtls.setup({})
+		require("lspconfig").pyright.setup({})
+		require("lspconfig").kotlin_language_server.setup({})
 	end,
 }

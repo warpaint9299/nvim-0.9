@@ -1,5 +1,5 @@
 local norkeymap_options = { noremap = true, silent = true }
-vim.keymap.set("i", "jk", "<Esc>", norkeymap_options)
+vim.keymap.set({ "i", "s" }, "jk", "<Esc>", norkeymap_options)
 vim.keymap.set("i", "<UP>", "<NOP>", norkeymap_options)
 vim.keymap.set("i", "<DOWN>", "<NOP>", norkeymap_options)
 vim.keymap.set("i", "<LEFT>", "<NOP>", norkeymap_options)
@@ -20,18 +20,22 @@ vim.keymap.set("n", "<S-DOWN>", ":botright split<CR>", norkeymap_options)
 vim.keymap.set("n", "<S-LEFT>", ":vertical topleft split<CR>", norkeymap_options)
 vim.keymap.set("n", "<S-RIGHT>", ":vertical botright split<CR>", norkeymap_options)
 vim.keymap.set("n", "<S-c>", ":close<CR>", norkeymap_options)
-vim.keymap.set("v", "<C-c>", 'y"*', norkeymap_options)
 -- buffers
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<cr>", norkeymap_options)
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<cr>", norkeymap_options)
 -- formatter
 vim.keymap.set("n", "<leader>f", ":w<CR>:Format<CR>", norkeymap_options)
 -- lsp
-vim.keymap.set({ "n", "i" }, "<C-1>", ":Lspsaga code_action<CR>", norkeymap_options)
-vim.keymap.set("n", "<leader>t", ":Lspsaga term_toggle<CR>", norkeymap_options)
+vim.keymap.set("n", "<C-1>", ":Lspsaga code_action<CR>", norkeymap_options)
+vim.keymap.set("n", "<A-t>", ":Lspsaga term_toggle<CR>", norkeymap_options)
 vim.keymap.set("n", "<leader>r", ":Lspsaga rename<CR>", norkeymap_options)
 vim.keymap.set("n", "<leader>o", ":Lspsaga outline<CR>", norkeymap_options)
 vim.keymap.set("n", "<S-f>", ":Lspsaga finder<CR>", norkeymap_options)
+
+-- clipboard register
+vim.keymap.set("v", "<C-c>", '"+y', norkeymap_options)
+vim.keymap.set({ "n", "v" }, "y", '"+y', norkeymap_options)
+vim.keymap.set({ "n", "v" }, "p", '"+p', norkeymap_options)
 
 -- reset default register of keys to avoid overwrite system clipboard
 -- vim.keymap.set({ "n", "v" }, "x", '"xx', norkeymap_options)
