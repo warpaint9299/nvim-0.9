@@ -37,6 +37,10 @@ vim.keymap.set("v", "<C-c>", '"+y', norkeymap_options)
 vim.keymap.set({ "n", "v" }, "y", '"+y', norkeymap_options)
 vim.keymap.set({ "n", "v" }, "p", '"+p', norkeymap_options)
 
+-- translate
+vim.keymap.set("v", "<C-t>", "<cmd>TransToZH<CR>", norkeymap_options)
+vim.keymap.set("n", "<space>T", "<cmd>TransToEN<CR>")
+
 -- reset default register of keys to avoid overwrite system clipboard
 -- vim.keymap.set({ "n", "v" }, "x", '"xx', norkeymap_options)
 -- vim.keymap.set({ "n", "v" }, "d", '"dd', norkeymap_options)
