@@ -4,6 +4,6 @@ return {
 	{ "marko-cerovac/material.nvim", enabled = true },
 	{ "ellisonleao/gruvbox.nvim", enabled = false },
 	{ "nvimdev/lspsaga.nvim", enabled = true },
-	{ "ray-x/lsp_signature.nvim", enabled = false },
+	{ "ray-x/lsp_signature.nvim", enabled = true },
 	{ "gennaro-tedesco/nvim-peekup", enabled = false },
 }
