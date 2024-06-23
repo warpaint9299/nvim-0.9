@@ -20,4 +20,3 @@ opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
 opt.clipboard:append({ "unnamed", "unnamedplus" })
--- vim.opt.iskeyword = 'a-z'
