@@ -14,7 +14,7 @@ return {
 					-- whether close float window on cursor move
 					close_on_cursor_move = true,
 					-- key to enter float window
-					enter_key = "T",
+					enter_key = "\\",
 				},
 			},
 			translate = {

@@ -10,13 +10,16 @@ opt.number = false
 opt.relativenumber = true
 opt.cursorline = true
 opt.cursorcolumn = true
-opt.hlsearch = true
+opt.hlsearch = false
 opt.showcmd = true
 opt.splitright = true
 opt.splitbelow = true
 opt.ignorecase = false
+opt.smartcase = true
 opt.autoindent = true
+opt.wrapscan = true
 opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
 opt.clipboard:append({ "unnamed", "unnamedplus" })
+opt.iskeyword = "a-z"
