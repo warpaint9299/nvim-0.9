@@ -1,4 +1,8 @@
 local norkeymap_options = { noremap = true, silent = true }
+-- save file
+vim.keymap.set("n", "<C-s>", ":write<CR>", norkeymap_options)
+
+-- insert mode
 vim.keymap.set({ "i", "s", "t" }, "jk", "<Esc>", norkeymap_options)
 vim.keymap.set("i", "<UP>", "<NOP>", norkeymap_options)
 vim.keymap.set("i", "<DOWN>", "<NOP>", norkeymap_options)
@@ -17,7 +21,7 @@ vim.keymap.set("n", "<C-LEFT>", ":vertical resize +10<CR>", norkeymap_options)
 vim.keymap.set("n", "<S-c>", ":close<CR>", norkeymap_options)
 
 -- formatter
-vim.keymap.set("n", "<leader>f", ":w<CR>:Format<CR>", norkeymap_options)
+vim.keymap.set("n", "<leader>f", ":Format<CR>", norkeymap_options)
 
 -- lsp
 vim.keymap.set("n", "<C-1>", ":Lspsaga code_action<CR>", norkeymap_options)
@@ -37,4 +41,4 @@ vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', norkeymap_options)
 vim.keymap.set("v", "<C-t>", "<cmd>TransToZH<CR>", norkeymap_options)
 vim.keymap.set("n", "<space>T", "<cmd>TransToEN<CR>")
 
-vim.keymap.set("n", "no", "<cmd>set hlsearch!<CR>", norkeymap_options)
+vim.keymap.set("n", "<leader>no", "<cmd>set hlsearch!<CR>", norkeymap_options)

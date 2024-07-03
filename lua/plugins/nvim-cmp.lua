@@ -11,9 +11,13 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 	},
 	config = function()
-		local luasnip = require("luasnip")
 		local cmp = require("cmp")
+		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
+
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
 		-- Set up lspconfig.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
@@ -32,9 +36,13 @@ return {
 		require("lspconfig")["pyright"].setup({
 			capabilities = capabilities,
 		})
+		require("lspconfig")["texlab"].setup({
+			capabilities = capabilities,
+		})
 		require("lspconfig")["kotlin_language_server"].setup({
 			capabilities = capabilities,
 		})
+
 		-- Set configuration for specific filetype.
 		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({

@@ -22,4 +22,4 @@ opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
 opt.clipboard:append({ "unnamed", "unnamedplus" })
-opt.iskeyword = "a-z"
+opt.iskeyword = "@,48-57,_,192-255,-,>"
