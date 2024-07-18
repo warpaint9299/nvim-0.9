@@ -10,7 +10,7 @@ return {
 			ignored_next_char = [=[[%w%%%'%[%"%.%`%$]]=],
 			enable_moveright = true,
 			enable_afterquote = true, -- add bracket pairs after quote
-			enable_check_bracket_line = false, --- check bracket in same line
+			enable_check_bracket_line = true, --- check bracket in same line
 			enable_bracket_in_quote = true, --
 			enable_abbr = false, -- trigger abbreviation
 			break_undo = true, -- switch for basic rule break undo sequence

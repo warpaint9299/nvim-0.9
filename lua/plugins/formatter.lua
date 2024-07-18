@@ -39,6 +39,11 @@ return {
 						}
 					end,
 				},
+				tex = {
+					function()
+						return { exe = "latexindent -", stdin = true }
+					end,
+				},
 				java = {
 					function()
 						return {
