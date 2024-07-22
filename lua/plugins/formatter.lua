@@ -57,6 +57,15 @@ return {
 						}
 					end,
 				},
+				rs = {
+					function()
+						return {
+							exe = "rustfmt",
+							args = { "--edition 2021" },
+							stdin = true,
+						}
+					end,
+				},
 				json = {
 					function()
 						return {

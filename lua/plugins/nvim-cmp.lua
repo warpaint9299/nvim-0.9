@@ -30,6 +30,9 @@ return {
 		require("lspconfig")["vimls"].setup({
 			capabilities = capabilities,
 		})
+		require("lspconfig")["bashls"].setup({
+			capabilities = capabilities,
+		})
 		require("lspconfig")["jdtls"].setup({
 			capabilities = capabilities,
 		})
@@ -40,6 +43,9 @@ return {
 			capabilities = capabilities,
 		})
 		require("lspconfig")["kotlin_language_server"].setup({
+			capabilities = capabilities,
+		})
+		require("lspconfig")["rust_analyzer"].setup({
 			capabilities = capabilities,
 		})
 
