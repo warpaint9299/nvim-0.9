@@ -39,6 +39,9 @@ return {
 		require("lspconfig")["pyright"].setup({
 			capabilities = capabilities,
 		})
+		require("lspconfig")["marksman"].setup({
+			capabilities = capabilities,
+		})
 		require("lspconfig")["texlab"].setup({
 			capabilities = capabilities,
 		})

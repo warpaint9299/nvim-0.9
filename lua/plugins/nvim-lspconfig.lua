@@ -7,6 +7,7 @@ return {
 		require("lspconfig").bashls.setup({})
 		require("lspconfig").jdtls.setup({})
 		require("lspconfig").pyright.setup({})
+		require("lspconfig").marksman.setup({})
 		require("lspconfig").texlab.setup({})
 		require("lspconfig").kotlin_language_server.setup({})
 		require("lspconfig").rust_analyzer.setup({})
