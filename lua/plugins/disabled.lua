@@ -1,5 +1,6 @@
 return {
 	-- disable
+	{ "svrana/neosolarized.nvim", enabled = false },
 	{ "folke/tokyonight.nvim", enabled = false },
 	{ "folke/which-key.nvim", enabled = true },
 	{ "marko-cerovac/material.nvim", enabled = true },

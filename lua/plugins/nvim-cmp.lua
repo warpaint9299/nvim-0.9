@@ -17,38 +17,47 @@ return {
 
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		require("luasnip.loaders.from_lua").load({paths = "~/.config/nvim/snippets"})
+		require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 		-- Set up lspconfig.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
+		require("lspconfig")["bashls"].setup({
+			capabilities = capabilities,
+		})
 		require("lspconfig")["clangd"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["lua_ls"].setup({
+		require("lspconfig")["cssls"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["vimls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["bashls"].setup({
+		require("lspconfig")["html"].setup({
 			capabilities = capabilities,
 		})
 		require("lspconfig")["jdtls"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["pyright"].setup({
+		require("lspconfig")["kotlin_language_server"].setup({
+			capabilities = capabilities,
+		})
+		require("lspconfig")["lua_ls"].setup({
 			capabilities = capabilities,
 		})
 		require("lspconfig")["marksman"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["texlab"].setup({
+		require("lspconfig")["vimls"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["kotlin_language_server"].setup({
+		require("lspconfig")["pyright"].setup({
 			capabilities = capabilities,
 		})
 		require("lspconfig")["rust_analyzer"].setup({
+			capabilities = capabilities,
+		})
+		require("lspconfig")["tsserver"].setup({
+			capabilities = capabilities,
+		})
+		require("lspconfig")["texlab"].setup({
 			capabilities = capabilities,
 		})
 
