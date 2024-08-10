@@ -27,7 +27,18 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
 local M = {
-	s("ins", { table.unpack(fmt("[[$int^{{{}}}_{{{}}}$]]", { i(0, ""), i(1, "") })) }),
+	s("main", {
+		t("#include <iostream>"),
+		t({ "", "#include <cstdlib>" }),
+		t({ "", "" }),
+		t({ "", "int" }),
+		t({ "", "main(int argc, char **argv)" }),
+		t({ "", "{" }),
+		t({ "", '\tstd::cout << "Hello, World!";' }),
+		i(0),
+		t({ "", "\treturn EXIT_SUCCESS;" }),
+		t({ "", "}" }),
+	}),
 }
 
 return M
