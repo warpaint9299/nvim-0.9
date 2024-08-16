@@ -4,6 +4,7 @@ local opt = vim.opt
 opt.autowrite = true
 opt.history = 10000
 opt.laststatus = 0
+opt.showtabline = 0
 opt.tabstop = 4
 opt.shiftwidth = 4
 opt.number = true

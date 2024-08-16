@@ -17,17 +17,4 @@ return { -- This plugin
 
 	-- Toggle compiler results
 	vim.api.nvim_set_keymap("n", "<leader><F7>", "<cmd>CompilerToggleResults<cr>", { noremap = true, silent = true }),
-}, { -- The task runner we use
-	"stevearc/overseer.nvim",
-	commit = "6271cab7ccc4ca840faa93f54440ffae3a3918bd",
-	cmd = { "CompilerOpen", "CompilerToggleResults", "CompilerRedo" },
-	config = function()
-		require("overseer").setup({
-			task_list = {
-				direction = "bottom",
-				min_height = 30,
-				max_height = 30,
-			},
-		})
-	end,
 }
