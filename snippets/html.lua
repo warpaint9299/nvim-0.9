@@ -28,7 +28,7 @@ local k = require("luasnip.nodes.key_indexer").new_key
 
 local M = {
 	s("html:5", {
-		table.unpack(fmt(
+		unpack(fmt(
 			[[<!DOCTYPE html>
 <html lang="en">
   <head>
@@ -37,27 +37,21 @@ local M = {
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
     <link rel="stylesheet" href="style.css"/>
-	<!-- <script crossorigin src="https://unpkg.com/react@[version]/umd/react.production.min.js"></script> -->
-	<!-- <script crossorigin src="https://unpkg.com/react-dom@[version]/umd/react-dom.production.min.js"></script> -->
-	<!-- <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script> -->
   </head>
   <body>
     <main>
 		<div id="root">{}</div>
     </main>
-	<!-- <script src="index.js" type="text/babel"></script> -->
+	<script src="index.js" type="text/javascript"></script>
   </body>
 </html>]],
 			{ i(0, "") }
 		)),
 	}),
-	s("script", { table.unpack(fmt([[<script src="{}"></script>]], { i(0, "") })) }),
-	s("script:crossorigin", { table.unpack(fmt([[<script crossorigin src="{}"></script>]], { i(0, "") })) }),
-	s(
-		"script:type:javascript",
-		{ table.unpack(fmt([[<script src="{}" type="text/javascript"></script>]], { i(0, "") })) }
-	),
-	s("link", { table.unpack(fmt([[<link rel="stylesheet" href="{}"/>]], { i(0, "") })) }),
+	s("script", { unpack(fmt([[<script src="{}"></script>]], { i(0, "") })) }),
+	s("script:crossorigin", { unpack(fmt([[<script crossorigin src="{}"></script>]], { i(0, "") })) }),
+	s("script:type:javascript", { unpack(fmt([[<script src="{}" type="text/javascript"></script>]], { i(0, "") })) }),
+	s("link", { unpack(fmt([[<link rel="stylesheet" href="{}"/>]], { i(0, "") })) }),
 }
 
 return M

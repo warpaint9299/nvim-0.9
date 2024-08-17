@@ -31,7 +31,7 @@ local M = {
 		t("import os"),
 		t({ "", "" }),
 		t({ "", "def main():" }),
-		t({ "", "\t print('Hello world');" }),
+		t({ "", "\tprint('Hello world');" }),
 		i(0),
 		t({ "", "" }),
 		t({ "", "if __name__ == '__main__':" }),

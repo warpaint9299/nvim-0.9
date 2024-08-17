@@ -14,10 +14,9 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-
+		require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-		require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
 		-- Set up lspconfig.
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.

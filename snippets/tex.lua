@@ -27,7 +27,14 @@ local ms = ls.multi_snippet
 local k = require("luasnip.nodes.key_indexer").new_key
 
 local M = {
-	s("ins", { table.unpack(fmt("[[$int^{{{}}}_{{{}}}$]]", { i(0, ""), i(1, "") })) }),
+	s("int", {
+		t("$int^{"),
+		i(0),
+		t("}"),
+		t("_{"),
+		i(1),
+		t("}"),
+	}),
 }
 
 return M
