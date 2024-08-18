@@ -22,5 +22,9 @@ opt.wrapscan = true
 opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
-opt.clipboard:append({ "unnamed", "unnamedplus" })
 opt.iskeyword = "@,48-57,_,192-255,-,>"
+opt.clipboard:append({ "unnamed", "unnamedplus" })
+-- r insert the star when typing <Enter> in Insert mode
+-- o insert the star when using "o" or "O" in Normal mode
+-- c break comment text according to 'textwidth'
+opt.formatoptions:remove("o")

@@ -19,6 +19,15 @@ local function restore_cursor_position()
 	end
 end
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "typescript" },
+	callback = function()
+		vim.opt.tabstop = 2
+		vim.opt.shiftwidth = 2
+		vim.opt.expandtab = true
+	end,
+})
+
 vim.api.nvim_create_autocmd("BufLeave", {
 	pattern = "*",
 	callback = save_cursor_position,
