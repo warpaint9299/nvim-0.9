@@ -23,8 +23,6 @@ opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
 opt.iskeyword = "@,48-57,_,192-255,-,>"
-opt.clipboard:append({ "unnamed", "unnamedplus" })
--- r insert the star when typing <Enter> in Insert mode
--- o insert the star when using "o" or "O" in Normal mode
--- c break comment text according to 'textwidth'
-opt.formatoptions:remove("o")
+-- "unnamedplus"：使用系统的 "+ 剪切板"（即普通系统剪切板）进行复制/粘贴。
+-- "unnamed"：使用系统的 "* 剪切板"（中键复制粘贴，通常在 X11 系统上有效）。
+opt.clipboard:append({ "unnamed" })
