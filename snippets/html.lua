@@ -36,13 +36,15 @@ local M = {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title></title>
+	<link rel="icon" type="image/png" href="public/favicon.ico">
     <link rel="stylesheet" href="style.css"/>
   </head>
   <body>
     <main>
 		<div id="root">{}</div>
     </main>
-	<script src="index.js" type="text/javascript"></script>
+	<script type="text/javascript" src="index.js" ></script>
+	<!-- <script type="module" src="src/main.ts"></script> -->
   </body>
 </html>]],
 			{ i(0, "") }
@@ -50,7 +52,8 @@ local M = {
 	}),
 	s("script", { unpack(fmt([[<script src="{}"></script>]], { i(0, "") })) }),
 	s("script:crossorigin", { unpack(fmt([[<script crossorigin src="{}"></script>]], { i(0, "") })) }),
-	s("script:type:javascript", { unpack(fmt([[<script src="{}" type="text/javascript"></script>]], { i(0, "") })) }),
+	s("script:type:javascript", { unpack(fmt([[<script type="text/javascript" src="{}" ></script>]], { i(0, "") })) }),
+	s("script:type:module", { unpack(fmt([[<script type="module" src="{}" ></script>]], { i(0, "") })) }),
 	s("link", { unpack(fmt([[<link rel="stylesheet" href="{}"/>]], { i(0, "") })) }),
 }
 
