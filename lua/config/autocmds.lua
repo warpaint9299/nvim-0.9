@@ -28,6 +28,33 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"asm",
+		"bash",
+		"c",
+		"cpp",
+		"css",
+		"go",
+		"html",
+		"java",
+		"javascript",
+		"lua",
+		"rust",
+		"typescript",
+		"vim",
+		"xml",
+		"yaml",
+	},
+	callback = function()
+		-- r insert the star when typing <Enter> in Insert mode
+		-- o insert the star when using "o" or "O" in Normal mode
+		-- c break comment text according to 'textwidth'
+		vim.opt.formatoptions:remove("r")
+		vim.opt.formatoptions:remove("o")
+		vim.opt.formatoptions:remove("c")
+	end,
+})
 vim.api.nvim_create_autocmd("BufLeave", {
 	pattern = "*",
 	callback = save_cursor_position,
