@@ -11,7 +11,15 @@ return {
 				sign_priority = 40,
 			},
 			ui = {
+				winblend = 10,
+				border = "rounded",
 				code_action = "💡",
+				colors = {
+					normal_bg = "NONE",
+				},
+			},
+			beacon = {
+				enable = false,
 			},
 		})
 	end,

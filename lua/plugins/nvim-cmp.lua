@@ -110,8 +110,16 @@ return {
 					}),
 				},
 				window = {
-					completion = cmp.config.window.bordered(),
-					documentation = cmp.config.window.bordered(),
+					completion = {
+						-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- 使用圆角字符
+						border = "rounded",
+						winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+					},
+					documentation = {
+						-- border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }, -- 使用圆角字符
+						border = "rounded",
+						winhighlight = 'Normal:CmpPmenu,FloatBorder:CmpPmenuBorder,CursorLine:PmenuSel,Search:None'
+					},
 				},
 				mapping = {
 					["<C-Space>"] = cmp.mapping.complete(),
