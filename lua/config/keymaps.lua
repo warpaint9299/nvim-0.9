@@ -24,7 +24,7 @@ vim.keymap.set("n", "<S-c>", ":close<CR>", norkeymap_options)
 vim.keymap.set("n", "<leader>f", ":Format<CR>", norkeymap_options)
 
 -- lsp
-vim.keymap.set("n", "<C-1>", ":Lspsaga code_action<CR>", norkeymap_options)
+vim.keymap.set("n", "<leader>1", ":Lspsaga code_action<CR>", norkeymap_options)
 vim.keymap.set("n", "<A-t>", ":Lspsaga term_toggle<CR>", norkeymap_options)
 vim.keymap.set("n", "<leader>r", ":Lspsaga rename<CR>", norkeymap_options)
 vim.keymap.set("n", "<leader>o", ":Lspsaga outline<CR>", norkeymap_options)
