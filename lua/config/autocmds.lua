@@ -85,23 +85,23 @@ vim.diagnostic.config({
 	},
 })
 
--- local function show_diagnostics_on_hover()
--- 	local diagnostics = vim.diagnostic.get()
--- 	if diagnostics and #diagnostics > 0 then
--- 		vim.diagnostic.open_float(nil, {
--- 			focusable = false,
--- 			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
--- 			border = "rounded",
--- 			source = "always",
--- 			prefix = " ",
--- 			scope = "cursor",
--- 		})
--- 	end
--- end
---
--- vim.api.nvim_create_autocmd("CursorHold", {
--- 	pattern = "*",
--- 	callback = show_diagnostics_on_hover,
--- })
---
--- vim.o.updatetime = 1000
+local function show_diagnostics_on_hover()
+	local diagnostics = vim.diagnostic.get()
+	if diagnostics and #diagnostics > 0 then
+		vim.diagnostic.open_float(nil, {
+			focusable = false,
+			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
+			border = "rounded",
+			source = "always",
+			prefix = " ",
+			scope = "cursor",
+		})
+	end
+end
+
+vim.api.nvim_create_autocmd("CursorHold", {
+	pattern = "*",
+	callback = show_diagnostics_on_hover,
+})
+
+vim.opt.updatetime = 700
