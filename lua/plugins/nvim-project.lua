@@ -3,7 +3,7 @@ return {
 	opts = {
 		projects = { -- define project roots
 			"~/Workspace/*",
-			"~/.config/nvim/lua/*",
+			"~/Documents/Notes/*",
 		},
 		-- Path to store history and sessions
 		datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
