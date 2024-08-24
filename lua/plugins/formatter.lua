@@ -57,7 +57,7 @@ return {
 						}
 					end,
 				},
-				rs = {
+				rust = {
 					function()
 						return {
 							exe = "rustfmt",

@@ -2,10 +2,6 @@ return {
 	"karb94/neoscroll.nvim",
 	version = "*",
 	config = function()
-		vim.keymap.set("n", "<ScrollWheelUp>", "<C-y>")
-		vim.keymap.set("n", "<ScrollWheelDown>", "<C-e>")
-		vim.keymap.set("v", "<ScrollWheelUp>", "<C-y>")
-		vim.keymap.set("v", "<ScrollWheelDown>", "<C-e>")
 		require("neoscroll").setup({
 			mappings = { -- Keys to be mapped to their corresponding default scrolling animation
 				"<C-u>",
@@ -27,5 +23,12 @@ return {
 			post_hook = nil, -- Function to run after the scrolling animation ends
 			performance_mode = false, -- Disable "Performance Mode" on all buffers.
 		})
+		local neoscroll = require("neoscroll")
+		vim.keymap.set({ "n", "v", "x" }, "<ScrollWheelUp>", function()
+			neoscroll.scroll(-0.2, { move_cursor = false, duration = 100 })
+		end)
+		vim.keymap.set({ "n", "v", "x" }, "<ScrollWheelDown>", function()
+			neoscroll.scroll(0.2, { move_cursor = false, duration = 100 })
+		end)
 	end,
 }
