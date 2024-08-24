@@ -1,46 +1,49 @@
-local norkeymap_options = { noremap = true, silent = true }
+local keyopts = { noremap = true, silent = true }
 -- save file
-vim.keymap.set("n", "<C-s>", ":write<CR>", norkeymap_options)
+vim.keymap.set("n", "<C-s>", ":write<CR>", keyopts)
 
 -- insert mode
-vim.keymap.set({ "i", "s", "t" }, "jk", "<Esc>", norkeymap_options)
-vim.keymap.set("i", "<UP>", "<NOP>", norkeymap_options)
-vim.keymap.set("i", "<DOWN>", "<NOP>", norkeymap_options)
-vim.keymap.set("i", "<LEFT>", "<NOP>", norkeymap_options)
-vim.keymap.set("i", "<RIGHT>", "<NOP>", norkeymap_options)
--- vim.keymap.set("i", "<C-j>", "<DOWN>", norkeymap_options)
--- vim.keymap.set("i", "<C-k>", "<UP>", norkeymap_options)
--- vim.keymap.set("i", "<C-h>", "<LEFT>", norkeymap_options)
-vim.keymap.set("i", "<C-l>", "<RIGHT>", norkeymap_options)
+vim.keymap.set({ "i", "s", "t" }, "jk", "<Esc>", keyopts)
+vim.keymap.set("i", "<UP>", "<NOP>", keyopts)
+vim.keymap.set("i", "<DOWN>", "<NOP>", keyopts)
+vim.keymap.set("i", "<LEFT>", "<NOP>", keyopts)
+vim.keymap.set("i", "<RIGHT>", "<NOP>", keyopts)
+vim.keymap.set("i", "<C-l>", "<RIGHT>", keyopts)
 
--- keys of split window
-vim.keymap.set("n", "<C-UP>", ":horizontal resize +5<CR>", norkeymap_options)
-vim.keymap.set("n", "<C-DOWN>", ":horizontal resize -5<CR>", norkeymap_options)
-vim.keymap.set("n", "<C-RIGHT>", ":vertical resize -10<CR>", norkeymap_options)
-vim.keymap.set("n", "<C-LEFT>", ":vertical resize +10<CR>", norkeymap_options)
-vim.keymap.set("n", "<S-c>", ":close<CR>", norkeymap_options)
-vim.keymap.set("n", "<S-d>", ":bdelete<CR>", norkeymap_options)
+-- keys of moving window
+vim.keymap.set("n", ";k", ":wincmd K<CR>", keyopts)
+vim.keymap.set("n", ";j", ":wincmd J<CR>", keyopts)
+vim.keymap.set("n", ";l", ":wincmd L<CR>", keyopts)
+vim.keymap.set("n", ";h", ":wincmd H<CR>", keyopts)
+
+-- keys of resize window
+vim.keymap.set("n", ";<S-k>", ":horizontal resize +5<CR>", keyopts)
+vim.keymap.set("n", ";<S-j>", ":horizontal resize -5<CR>", keyopts)
+vim.keymap.set("n", ";<S-l>", ":vertical resize -10<CR>", keyopts)
+vim.keymap.set("n", ";<S-h>", ":vertical resize +10<CR>", keyopts)
+
+-- keys of delete buffer or close tab
+vim.keymap.set("n", "<S-c>", ":close<CR>", keyopts)
+vim.keymap.set("n", "<S-d>", ":bdelete<CR>", keyopts)
 
 -- formatter
-vim.keymap.set("n", "<leader>f", ":Format<CR>", norkeymap_options)
+vim.keymap.set("n", "<leader>f", ":Format<CR>", keyopts)
 
 -- lsp
-vim.keymap.set("n", ";a", ":Lspsaga code_action<CR>", norkeymap_options)
-vim.keymap.set("n", "<A-t>", ":Term<CR>", norkeymap_options)
-vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", norkeymap_options)
-vim.keymap.set("n", "sd", ":Lspsaga show_line_diagnostics<CR>", norkeymap_options)
+vim.keymap.set("n", "<leader>'", ":Lspsaga code_action<CR>", keyopts)
+vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
+
 
 -- clipboard register
-vim.keymap.set("v", "<C-c>", '"+y', norkeymap_options)
-vim.keymap.set({ "n", "v" }, "<leader>y", '"+y', norkeymap_options)
-vim.keymap.set({ "n", "v" }, "<leader>p", '"+p', norkeymap_options)
+vim.keymap.set("v", "<C-c>", '"+y', keyopts)
 
 -- translate
-vim.keymap.set("v", "<C-t>", "<cmd>TransToZH<CR>", norkeymap_options)
-vim.keymap.set("n", "<space>T", "<cmd>TransToEN<CR>")
+vim.keymap.set("v", ";t", "<cmd>TransToZH<CR>", keyopts)
+vim.keymap.set("n", ";t", "<cmd>TransToEN<CR>")
 
-vim.keymap.set("n", "<tab>", ":bnext<CR>", norkeymap_options)
-vim.keymap.set("n", "<S-tab>", ":bprevious<CR>", norkeymap_options)
-vim.keymap.set("n", "<leader>te", ":tabedit<CR>", norkeymap_options)
-vim.keymap.set("n", "<leader><tab>", ":tabnext<CR>", norkeymap_options)
-vim.keymap.set("n", "<leader><S-tab>", ":tabprevious<CR>", norkeymap_options)
+-- tab and buffer
+vim.keymap.set("n", "<tab>", ":bnext<CR>", keyopts)
+vim.keymap.set("n", "<S-tab>", ":bprevious<CR>", keyopts)
+vim.keymap.set("n", "<leader>te", ":tabedit<CR>", keyopts)
+vim.keymap.set("n", "<leader><tab>", ":tabnext<CR>", keyopts)
+vim.keymap.set("n", "<leader><S-tab>", ":tabprevious<CR>", keyopts)

@@ -1,11 +1,12 @@
 return {
 	"mattn/emmet-vim",
 	config = function()
-		-- key: `<C-y>,`
-		vim.g.user_emmet_mode = "inv"
-		vim.cmd([[ autocmd FileType html,css EmmetInstall ]])
-		vim.g.user_emmet_settings = {
-			indent_blockelement = 1,
-		}
+		vim.cmd([[
+			let g:user_emmet_install_global = 0
+			let g:user_emmet_mode='inv'
+			" press key `<C-y>,` to expand emmet expression
+			let g:user_emmet_leader_key='<C-y>' 
+			autocmd FileType html,css EmmetInstall 
+		]])
 	end,
 }
