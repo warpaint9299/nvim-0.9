@@ -4,7 +4,7 @@ return {
 		"vim-airline/vim-airline-themes",
 	},
 	config = function()
-		vim.opt.laststatus = 2
+		vim.opt.laststatus = 0
 		vim.opt.showtabline = 0
 		vim.cmd([[
 			let g:airline_theme='base16_solarized'
@@ -35,5 +35,13 @@ return {
 				\ [ 'x', 'y', 'z', 'error' ]
 				\ ]
 		]])
+		function ToggleLastStatus()
+			if vim.opt.laststatus:get() == 0 then
+				vim.opt.laststatus = 2
+			else
+				vim.opt.laststatus = 0
+			end
+		end
+		vim.api.nvim_set_keymap("n", "<F2>", ":lua ToggleLastStatus()<CR>", { noremap = true, silent = true })
 	end,
 }
