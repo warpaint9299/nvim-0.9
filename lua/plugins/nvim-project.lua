@@ -22,13 +22,13 @@ return {
 		vim.opt.sessionoptions:append("globals") -- save global variables that start with an uppercase letter and contain at least one lowercase letter.
 		vim.api.nvim_set_keymap(
 			"n",
-			";p",
+			"\\p",
 			":Telescope neovim-project discover<CR>",
 			{ noremap = true, silent = true }
 		)
 		vim.api.nvim_set_keymap(
 			"n",
-			";r",
+			"\\r",
 			":Telescope neovim-project history<CR>",
 			{ noremap = true, silent = true }
 		)

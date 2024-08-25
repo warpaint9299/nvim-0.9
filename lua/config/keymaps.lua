@@ -30,9 +30,8 @@ vim.keymap.set("n", "<S-d>", ":bdelete<CR>", keyopts)
 vim.keymap.set("n", "<leader>f", ":Format<CR>", keyopts)
 
 -- lsp
-vim.keymap.set("n", "<leader>'", ":Lspsaga code_action<CR>", keyopts)
+vim.keymap.set("n", ";1", ":Lspsaga code_action<CR>", keyopts)
 vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
-
 
 -- clipboard register
 vim.keymap.set("v", "<C-c>", '"+y', keyopts)
@@ -44,6 +43,6 @@ vim.keymap.set("n", ";t", "<cmd>TransToEN<CR>")
 -- tab and buffer
 vim.keymap.set("n", "<tab>", ":bnext<CR>", keyopts)
 vim.keymap.set("n", "<S-tab>", ":bprevious<CR>", keyopts)
-vim.keymap.set("n", "<leader>te", ":tabedit<CR>", keyopts)
-vim.keymap.set("n", "<leader><tab>", ":tabnext<CR>", keyopts)
-vim.keymap.set("n", "<leader><S-tab>", ":tabprevious<CR>", keyopts)
+vim.keymap.set("n", ";te", ":tabedit<CR>", keyopts)
+vim.keymap.set("n", ";<tab>", ":tabnext<CR>", keyopts)
+vim.keymap.set("n", ";<S-tab>", ":tabprevious<CR>", keyopts)
