@@ -23,6 +23,7 @@ return {
 				"llvm",
 				"make",
 				"markdown",
+				"markdown_inline",
 				"python",
 				"perl",
 				"rust",

@@ -8,8 +8,6 @@ return {
 				mappings = {
 					i = {
 						["<esc>"] = require("telescope.actions").close,
-						["<C-h>"] = require("telescope.actions").select_horizontal,
-						["<C-v>"] = require("telescope.actions").select_vertical,
 					},
 				},
 			},
