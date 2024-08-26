@@ -7,6 +7,7 @@ return {
 			groups = {
 				"Normal",
 				"NormalNC",
+				"NormalFloat",
 				"Comment",
 				"Constant",
 				"Special",
@@ -17,6 +18,7 @@ return {
 				"Underlined",
 				"Todo",
 				"String",
+				"FloatBorder",
 				"Function",
 				"Conditional",
 				"Repeat",
@@ -30,12 +32,10 @@ return {
 				"StatusLine",
 				"StatusLineNC",
 				"EndOfBuffer",
+				"WinSeparator"
 			},
 			-- table: additional groups that should be cleared
 			extra_groups = {
-				"Normal",
-				"NormalFloat",
-				"FloatBorder",
 				"TermCursor",
 				"TermCursorNC",
 				"TerminalNormal",
@@ -68,7 +68,6 @@ return {
 			-- function: code to be executed after highlight groups are cleared
 			-- Also the user event "TransparentClear" will be triggered
 			on_clear = function() end,
-			require("transparent").clear_prefix("NeoTree"),
 		})
 	end,
 }
