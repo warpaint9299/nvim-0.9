@@ -84,7 +84,7 @@ return {
 				open_in_browser = "",
 			},
 		})
-		vim.api.nvim_set_keymap("n", "<leader>;", ":DevdocsOpenCurrent<CR>", { noremap = true, silent = true })
-		vim.api.nvim_set_keymap("n", "<leader>,", ":DevdocsOpen ", { noremap = true })
+		vim.api.nvim_set_keymap("n", "<leader>;.", ":DevdocsOpenCurrent<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<leader>;,", ":DevdocsOpen ", { noremap = true })
 	end,
 }
