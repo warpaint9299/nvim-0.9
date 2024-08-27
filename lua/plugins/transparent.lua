@@ -32,10 +32,11 @@ return {
 				"StatusLine",
 				"StatusLineNC",
 				"EndOfBuffer",
-				"WinSeparator"
+				"WinSeparator",
 			},
 			-- table: additional groups that should be cleared
 			extra_groups = {
+				"Pmenu",
 				"TermCursor",
 				"TermCursorNC",
 				"TerminalNormal",
