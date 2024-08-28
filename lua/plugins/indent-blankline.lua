@@ -17,6 +17,11 @@ return {
 			scope = {
 				enabled = false,
 			},
+			exclude = {
+				filetypes = {
+					"dashboard",
+				},
+			},
 		})
 	end,
 }
