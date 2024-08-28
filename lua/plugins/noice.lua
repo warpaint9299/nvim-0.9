@@ -25,11 +25,6 @@ return {
 			render = "simple",
 		})
 
-		if vim.g.neovide then
-			require("noice").setup({})
-			return
-		end
-
 		require("noice").setup({
 			cmdline = {
 				enabled = false, -- enables the Noice cmdline UI
