@@ -1,6 +1,9 @@
 return {
 	"xiyaowong/transparent.nvim",
 	config = function()
+		if vim.g.neovide then
+			return
+		end
 		-- Optional, you don't have to run setup.
 		require("transparent").setup({
 			-- table: default groups
