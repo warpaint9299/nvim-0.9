@@ -1,0 +1,7 @@
+{
+  "Int": {
+    "prefix": "int",
+    "body": "\\$int^{$1}_{$2}",
+    "description": ""
+  }
+}

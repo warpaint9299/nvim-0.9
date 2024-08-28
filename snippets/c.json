@@ -1,0 +1,23 @@
+{
+  "Main": {
+    "prefix": "main",
+    "body": [
+      "#include <errno.h>",
+      "#include <stdio.h>",
+      "#include <stdlib.h>",
+      "",
+      "int",
+      "main(int argc, char **argv)",
+      "{",
+      "\t$0",
+      "\treturn EXIT_SUCCESS;",
+      "}"
+    ],
+    "description": "main function"
+  },
+  "Hello world": {
+    "prefix": "say hello world",
+    "body": "fprintf(stdout, \"Hello world.\\n\");",
+    "description": "say hello world"
+  }
+}

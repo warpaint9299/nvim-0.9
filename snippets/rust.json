@@ -1,0 +1,16 @@
+{
+  "Main": {
+    "prefix": "main",
+    "body": [
+      "fn main(){",
+      "\t$0",
+      "}"
+    ],
+    "description": "main function"
+  },
+  "Hello world": {
+    "prefix": "hello world",
+    "body": "println!(\"Hello, world!\");",
+    "description": "say hello world"
+  }
+}

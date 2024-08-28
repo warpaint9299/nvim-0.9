@@ -1,0 +1,41 @@
+{
+  "html": {
+    "prefix": "html:5",
+    "body": [
+      "<!DOCTYPE html>",
+      "<html lang=\"en\">",
+      "  <head>",
+      "    <meta charset=\"UTF-8\">",
+      "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">",
+      "    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">",
+      "    <title></title>",
+      "    <link rel=\"icon\" type=\"image/png\" href=\"${1:public/favicon.ico}\">",
+      "    <link rel=\"stylesheet\" href=\"${2:style.css}\"/>",
+      "  </head>",
+      "  <body>",
+      "    <main>",
+      "      <div id=\"root\">${0:<!-- Content goes here -->}</div>",
+      "    </main>",
+      "    <script type=\"text/javascript\" src=\"${3:index.js}\"></script>",
+      "    <!-- <script type=\"module\" src=\"src/main.ts\"></script> -->",
+      "  </body>",
+      "</html>"
+    ],
+    "description": "html5 template."
+  },
+  "css": {
+    "prefix": ["link", "css"],
+    "body": "<link rel=\"stylesheet\" href=\"${0:style.css}\"/>",
+    "description": "css tag"
+  },
+  "script": {
+    "prefix": ["script", "javascript"],
+    "body": "<script type=\"text/javascript\" src=\"${0:index.js}\" ></script>",
+    "description": "javascript tag"
+  },
+  "Console": {
+    "prefix": ["console", "log"],
+    "body": "console.log($1)$0",
+    "description": "console.log()"
+  }
+}

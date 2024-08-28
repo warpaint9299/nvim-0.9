@@ -10,6 +10,7 @@ return {
 		"hrsh7th/cmp-nvim-lua",
 		"hrsh7th/cmp-vsnip",
 		"hrsh7th/vim-vsnip",
+		"hrsh7th/vim-vsnip-integ",
 		"hrsh7th/cmp-nvim-lsp-signature-help",
 		"ray-x/cmp-treesitter",
 		"ray-x/cmp-sql",
@@ -19,8 +20,9 @@ return {
 	config = function()
 		local cmp = require("cmp")
 		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+		vim.cmd([[let g:vsnip_snippet_dir = stdpath("config") .. "/snippets" ]])
 
 		local capabilities = require("cmp_nvim_lsp").default_capabilities()
 		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
@@ -113,9 +115,6 @@ return {
 		vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
 
 		cmp.setup({
-			completion = {
-				autocomplete = false,
-			},
 			enabled = function()
 				return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
 			end,
@@ -135,7 +134,7 @@ return {
 						menu = {
 							buffer = "[Buffer]",
 							nvim_lsp = "[LSP]",
-							luasnip = "[LuaSnip]",
+							vsnip = "[VSnip]",
 							nvim_lua = "[Lua]",
 							latex_symbols = "[Latex]",
 						},
@@ -146,7 +145,7 @@ return {
 			mapping = {
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.ConfirmBehavior.Select }),
+				["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.SelectBehavior.Select }),
 				["<Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
 						cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })

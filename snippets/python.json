@@ -1,0 +1,20 @@
+{
+  "Main": {
+    "prefix": "main",
+    "body": [
+      "import os",
+      "",
+      "def main():",
+      "\tprint($0)",
+      "",
+      "if __name__ == '__main__':",
+      "\tmain()"
+    ],
+    "description": "main function"
+  },
+  "Hello world": {
+    "prefix": "say hello world",
+    "body": "print(\"Hello, world!\");",
+    "description": "say hello world"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "Main": {
+    "prefix": "main",
+    "body": [
+      "#include <iostream>",
+      "#include <cstdlib>",
+      "",
+      "int",
+      "main(int argc, char **argv)",
+      "{",
+      "\t$0",
+      "\treturn EXIT_SUCCESS;",
+      "}"
+    ],
+    "description": "main function"
+  },
+  "Hello world": {
+    "prefix": "say hello world",
+    "body": "std::cout << \"Hello, World!\";",
+    "description": "say hello world"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "For": {
+    "prefix": ["for"],
+    "body": [
+      "for( let ${1:i} = ${2:0}; ${1:i} < ${3:args.length}; ${1:i}++){",
+      "\t$0",
+      "}"
+    ],
+    "description": "For loop"
+  },
+  "Console": {
+    "prefix": ["console", "log"],
+    "body": "console.log($1)$0",
+    "description": "console.log()"
+  },
+  "Hello world": {
+    "prefix": "hello world",
+    "body": "console.log(\"hello world\");$0",
+    "description": "say hello world"
+  }
+}
