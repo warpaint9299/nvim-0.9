@@ -57,12 +57,6 @@ return {
 		require("lspconfig")["rust_analyzer"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["tsserver"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["texlab"].setup({
-			capabilities = capabilities,
-		})
 
 		-- Set configuration for specific filetype.
 		cmp.setup.filetype("gitcommit", {

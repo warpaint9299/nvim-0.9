@@ -6,6 +6,14 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 	},
 	config = function()
+		local original_notify = vim.notify
+		vim.notify = function(msg, ...)
+			if msg:match("[nvim-devdocs] Plugin initialized") then
+				return
+			end
+			original_notify(msg, ...)
+		end
+
 		require("nvim-devdocs").setup({
 			dir_path = vim.fn.stdpath("data") .. "/devdocs", -- installation directory
 			hold_buf = false, -- keeping buffers open after closing.

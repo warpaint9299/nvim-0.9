@@ -23,6 +23,48 @@ opt.encoding = "utf-8"
 opt.background = "dark"
 opt.mousemodel = ""
 opt.iskeyword = "@,48-57,_,192-255,-,>"
--- "unnamedplus"：使用系统的 "+ 剪切板"（即普通系统剪切板）进行复制/粘贴。
--- "unnamed"：使用系统的 "* 剪切板"（中键复制粘贴，通常在 X11 系统上有效）。
 opt.clipboard:append({ "unnamed" })
+
+if vim.g.neovide then
+	vim.opt.guifont = "Comic Code:h12"
+	vim.opt.linespace = 0
+	vim.g.neovide_scale_factor = 1.0
+	vim.g.neovide_text_gamma = 0.0
+	vim.g.neovide_text_contrast = 0.5
+	vim.g.neovide_padding_top = 0
+	vim.g.neovide_padding_bottom = 0
+	vim.g.neovide_padding_right = 0
+	vim.g.neovide_padding_left = 0
+	vim.g.transparency = 0.0
+	vim.g.neovide_transparency = 0.7
+	vim.g.neovide_background_color = "#0e0e0e"
+	vim.g.neovide_window_blurred = true
+	vim.g.neovide_floating_blur_amount_x = 2.0
+	vim.g.neovide_floating_blur_amount_y = 2.0
+	vim.g.neovide_floating_shadow = true
+	vim.g.neovide_floating_z_height = 10
+	vim.g.neovide_light_angle_degrees = 45
+	vim.g.neovide_light_radius = 5
+	vim.g.neovide_show_border = true
+	vim.g.neovide_position_animation_length = 0.15
+	vim.g.neovide_scroll_animation_length = 0.3
+	vim.g.neovide_scroll_animation_far_lines = 1
+	vim.g.neovide_hide_mouse_when_typing = true
+	vim.g.neovide_underline_stroke_scale = 1.0
+	vim.g.neovide_theme = "auto"
+	vim.g.neovide_refresh_rate = 60
+	vim.g.neovide_refresh_rate_idle = 5
+	vim.g.neovide_no_idle = true
+	vim.g.neovide_confirm_quit = true
+	vim.g.neovide_detach_on_quit = "always_quit"
+	vim.g.neovide_fullscreen = true
+	vim.g.neovide_remember_window_size = true
+	vim.g.neovide_cursor_animation_length = 0.13
+	vim.g.neovide_cursor_trail_size = 0.3
+	vim.g.neovide_cursor_antialiasing = true
+	vim.g.neovide_cursor_animate_in_insert_mode = true
+	vim.g.neovide_cursor_animate_command_line = true
+	vim.g.neovide_cursor_unfocused_outline_width = 0.125
+	vim.g.neovide_cursor_smooth_blink = true
+	vim.g.neovide_cursor_vfx_mode = "pixiedust" -- railgun, torpedo, pixiedust, sonicboom, ripple, wireframe
+end

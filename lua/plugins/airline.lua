@@ -23,7 +23,7 @@ return {
 			let g:airline#extensions#tabline#left_sep = ' '
 			let g:airline#extensions#tabline#left_alt_sep = ' '
 			let g:airline#extensions#tabline#formatter = 'default'
-			let g:airline#extensions#tabline#left_sep = " "
+			let g:airline#extensions#tabline#left_sep = ""
 			let g:airline#extensions#tabline#right_sep = ""
 			let g:airline#extensions#tabline#show_close_button = 0
 			let g:airline#extensions#tabline#show_tabs = 1
@@ -35,6 +35,18 @@ return {
 				\ [ 'x', 'y', 'z', 'error' ]
 				\ ]
 		]])
+
+		if vim.g.neovide then
+			vim.opt.laststatus = 2
+			vim.opt.showtabline = 2
+			vim.cmd([[
+				let g:airline_left_sep = ""
+				let g:airline_right_sep = ""
+				let g:airline#extensions#tabline#left_sep = ""
+				let g:airline#extensions#tabline#right_sep = ""
+			]])
+		end
+
 		function ToggleLastStatus()
 			if vim.opt.laststatus:get() == 0 then
 				vim.opt.laststatus = 2

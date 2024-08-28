@@ -29,23 +29,7 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"asm",
-		"bash",
-		"c",
-		"cpp",
-		"css",
-		"go",
-		"html",
-		"java",
-		"javascript",
-		"lua",
-		"rust",
-		"typescript",
-		"vim",
-		"xml",
-		"yaml",
-	},
+	pattern = "*",
 	callback = function()
 		-- r insert the star when typing <Enter> in Insert mode
 		-- o insert the star when using "o" or "O" in Normal mode
@@ -55,6 +39,7 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.opt.formatoptions:remove("c")
 	end,
 })
+
 vim.api.nvim_create_autocmd("BufLeave", {
 	pattern = "*",
 	callback = save_cursor_position,
@@ -63,7 +48,6 @@ vim.api.nvim_create_autocmd("BufLeave", {
 vim.api.nvim_create_autocmd("BufReadPost", {
 	pattern = "*",
 	callback = function()
-		-- 确保光标恢复位置在文件末尾之前
 		local buf = vim.api.nvim_get_current_buf()
 		local last_pos = vim.api.nvim_buf_get_mark(buf, '"')
 		if last_pos[1] > 0 and last_pos[1] <= vim.api.nvim_buf_line_count(buf) then
@@ -76,32 +60,3 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = restore_cursor_position,
 })
-
-vim.diagnostic.config({
-	virtual_text = false,
-	update_in_insert = false,
-	float = {
-		source = "always",
-	},
-})
-
-local function show_diagnostics_on_hover()
-	local diagnostics = vim.diagnostic.get()
-	if diagnostics and #diagnostics > 0 then
-		vim.diagnostic.open_float(nil, {
-			focusable = false,
-			close_events = { "BufLeave", "CursorMoved", "InsertEnter", "FocusLost" },
-			border = "rounded",
-			source = "always",
-			prefix = " ",
-			scope = "cursor",
-		})
-	end
-end
-
-vim.api.nvim_create_autocmd("CursorHold", {
-	pattern = "*",
-	callback = show_diagnostics_on_hover,
-})
-
-vim.opt.updatetime = 700
