@@ -7,7 +7,11 @@ return {
 			"nvim-neotest/nvim-nio",
 		},
 		config = function()
-			vim.fn.sign_define("DapBreakpoint", { text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" })
+			vim.fn.sign_define(
+				"DapBreakpoint",
+				{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
+			)
+			vim.api.nvim_set_keymap("n", "<leader>p", ":DapToggleBreakpoint<CR>", { noremap = true, silent = true })
 			local dap, dapui = require("dap"), require("dapui")
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()

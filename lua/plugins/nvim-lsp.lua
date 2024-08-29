@@ -68,81 +68,22 @@ return {
 		end,
 	},
 	{
-		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
+		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
+		event = "LspAttach",
 		config = function()
-			vim.diagnostic.config({ virtual_text = false })
-			require("tiny-inline-diagnostic").setup({
-				signs = {
-					left = "",
-					right = "",
-					diag = "●",
-					arrow = "    ",
-					up_arrow = "    ",
-					vertical = " │",
-					vertical_end = " └",
-				},
-				hi = {
-					error = "DiagnosticError",
-					warn = "DiagnosticWarn",
-					info = "DiagnosticInfo",
-					hint = "DiagnosticHint",
-					arrow = "NonText",
-					background = "None", -- Can be a highlight or a hexadecimal color (#RRGGBB)
-					mixing_color = "None", -- Can be None or a hexadecimal color (#RRGGBB). Used to blend the background color with the diagnostic background color with another color.
-				},
-				blend = {
-					factor = 0.27,
-				},
-				options = {
-					show_source = false,
-					throttle = 20,
-					softwrap = 15,
-					multiple_diag_under_cursor = false,
-					multilines = false,
-					overflow = {
-						-- Manage the overflow of the message.
-						--    - wrap: when the message is too long, it is then displayed on multiple lines.
-						--    - none: the message will not be truncated.
-						--    - oneline: message will be displayed entirely on one line.
-						mode = "wrap",
-					},
-					format = nil,
-					break_line = {
-						enabled = false,
-						after = 30,
-					},
-					virt_texts = {
-						priority = 2048,
-					},
-				},
+			vim.diagnostic.config({
+				virtual_text = false,
+				virtual_lines = { only_current_line = true },
 			})
+			require("lsp_lines").setup()
 		end,
 	},
 	{
 		"onsails/lspkind.nvim",
 		config = function()
 			require("lspkind").init({
-				-- DEPRECATED (use mode instead): enables text annotations
-				--
-				-- default: true
-				-- with_text = true,
-
-				-- defines how annotations are shown
-				-- default: symbol
-				-- options: 'text', 'text_symbol', 'symbol_text', 'symbol'
 				mode = "symbol_text",
-
-				-- default symbol map
-				-- can be either 'default' (requires nerd-fonts font) or
-				-- 'codicons' for codicon preset (requires vscode-codicons font)
-				--
-				-- default: 'default'
-				preset = "codicons",
-
-				-- override preset symbols
-				--
-				-- default: {}
+				preset = "default",
 				symbol_map = {
 					Text = "󰉿",
 					Method = "󰆧",
@@ -176,6 +117,10 @@ return {
 	{
 		"nvimdev/lspsaga.nvim",
 		event = "LspAttach",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
 		config = function()
 			require("lspsaga").setup({
 				lightbulb = {
@@ -198,9 +143,5 @@ return {
 				},
 			})
 		end,
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
 	},
 }

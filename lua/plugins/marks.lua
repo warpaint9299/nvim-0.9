@@ -18,7 +18,7 @@ return {
 				set_bookmark0 = "mm",
 				next_bookmark0 = "mn",
 				prev_bookmark0 = "m,",
-				delete_bookmark0 = "dmz",
+				delete_bookmark0 = "dmm",
 			},
 		})
 	end,
