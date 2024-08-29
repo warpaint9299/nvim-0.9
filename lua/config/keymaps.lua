@@ -27,7 +27,7 @@ vim.keymap.set("n", "<S-c>", ":close<CR>", keyopts)
 vim.keymap.set("n", "<S-d>", ":bdelete<CR>", keyopts)
 
 -- formatter
-vim.keymap.set("n", "<leader>f", ":Format<CR>", keyopts)
+vim.keymap.set("n", "<leader>F", ":Format<CR>", keyopts)
 
 -- lsp
 vim.keymap.set("n", "<leader>;1", ":Lspsaga code_action<CR>", keyopts)
