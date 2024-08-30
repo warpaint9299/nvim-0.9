@@ -15,6 +15,7 @@ return {
 				"java-debug-adapter",
 				"java-test",
 				"jdtls",
+				"kotlin-debug-adapter",
 				"kotlin-language-server",
 				"latexindent",
 				"lua-language-server",

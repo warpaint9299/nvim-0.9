@@ -36,6 +36,8 @@ return {
 				dapui.close()
 			end
 
+			dap.set_log_level("ERROR")
+
 			-- Shell
 			dap.adapters.bashdb = {
 				type = "executable",
@@ -81,7 +83,7 @@ return {
 			}
 
 			-- C / C++
-			dap.adapters.codelldb = {
+			dap.adapters.lldb = {
 				type = "server",
 				port = "${port}",
 				executable = {
