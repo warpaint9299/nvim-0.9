@@ -2,6 +2,13 @@ return {
 	"mhartington/formatter.nvim",
 	config = function()
 		local util = require("formatter.util")
+		local augroup = vim.api.nvim_create_augroup
+		local autocmd = vim.api.nvim_create_autocmd
+		augroup("__formatter__", { clear = true })
+		autocmd("BufWritePost", {
+			group = "__formatter__",
+			command = ":FormatWrite",
+		})
 		require("formatter").setup({
 			-- Enable or disable logging
 			logging = true,

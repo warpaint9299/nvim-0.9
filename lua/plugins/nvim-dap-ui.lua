@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
+			"jbyuki/one-small-step-for-vimkind",
 		},
 		config = function()
 			vim.fn.sign_define(
@@ -34,6 +35,153 @@ return {
 			dap.listeners.before.event_exited.dapui_config = function()
 				dapui.close()
 			end
+
+			-- Shell
+			dap.adapters.bashdb = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/bash-debug-adapter",
+				name = "bashdb",
+			}
+			dap.configurations.sh = {
+				{
+					type = "bashdb",
+					request = "launch",
+					name = "Launch file",
+					showDebugOutput = true,
+					pathBashdb = vim.fn.stdpath("data")
+						.. "/mason/packages/bash-debug-adapter/extension/bashdb_dir/bashdb",
+					pathBashdbLib = vim.fn.stdpath("data") .. "/mason/packages/bash-debug-adapter/extension/bashdb_dir",
+					trace = true,
+					file = "${file}",
+					program = "${file}",
+					cwd = "${workspaceFolder}",
+					pathCat = "cat",
+					pathBash = "/bin/bash",
+					pathMkfifo = "mkfifo",
+					pathPkill = "pkill",
+					args = {},
+					env = {},
+					terminalKind = "integrated",
+				},
+			}
+
+			-- Lua
+			dap.adapters.nlua = function(callback, config)
+				callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
+			end
+			dap.configurations.lua = {
+				{
+					type = "nlua",
+					request = "attach",
+					name = "Attach to running Neovim instance",
+					program = function()
+						pcall(require("osv").launch({ port = 8086 }))
+					end,
+				},
+			}
+
+			-- C / C++
+			dap.adapters.codelldb = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = vim.fn.stdpath("data") .. "/mason/bin/codelldb",
+					args = { "--port", "${port}" },
+					detached = function()
+						if vim.fn.has("win32") == 1 then
+							return false
+						else
+							return true
+						end
+					end,
+				},
+			}
+			dap.configurations.c = {
+				{
+					name = "Launch",
+					type = "lldb",
+					request = "launch",
+					program = function() -- Ask the user what executable wants to debug
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+					args = {},
+				},
+			}
+			dap.configurations.cpp = {
+				{
+					name = "Launch",
+					type = "lldb",
+					request = "launch",
+					program = function() -- Ask the user what executable wants to debug
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+					end,
+					cwd = "${workspaceFolder}",
+					stopOnEntry = false,
+					args = {},
+				},
+			}
+
+			-- Python
+			dap.adapters.python = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/packages/debugpy/venv/bin/python",
+				args = { "-m", "debugpy.adapter" },
+			}
+			dap.configurations.python = {
+				{
+					type = "python",
+					request = "launch",
+					name = "Launch file",
+					program = "${file}",
+				},
+			}
+
+			-- Go
+			-- Requires:
+			-- * You have initialized your module with 'go mod init module_name'.
+			-- * You :cd your project before running DAP.
+			dap.adapters.delve = {
+				type = "server",
+				port = "${port}",
+				executable = {
+					command = vim.fn.stdpath("data") .. "/mason/packages/delve/dlv",
+					args = { "dap", "-l", "127.0.0.1:${port}" },
+				},
+			}
+			dap.configurations.go = {
+				{
+					type = "delve",
+					name = "Compile module and debug this file",
+					request = "launch",
+					program = "./${relativeFileDirname}",
+				},
+				{
+					type = "delve",
+					name = "Compile module and debug this file (test)",
+					request = "launch",
+					mode = "test",
+					program = "./${relativeFileDirname}",
+				},
+			}
+
+			-- Kotlin
+			-- Kotlin projects have very weak project structure conventions.
+			-- You must manually specify what the project root and main class are.
+			dap.adapters.kotlin = {
+				type = "executable",
+				command = vim.fn.stdpath("data") .. "/mason/bin/kotlin-debug-adapter",
+			}
+			dap.configurations.kotlin = {
+				{
+					type = "kotlin",
+					request = "launch",
+					name = "Launch kotlin program",
+					projectRoot = "${workspaceFolder}/app", -- ensure this is correct
+					mainClass = "AppKt", -- ensure this is correct
+				},
+			}
 		end,
 	},
 	{

@@ -123,6 +123,10 @@ return {
 			"nvim-tree/nvim-web-devicons", -- optional
 		},
 		config = function()
+			local keyopts = { noremap = true, silent = true }
+			-- lsp
+			vim.keymap.set("n", "<leader>;1", ":Lspsaga code_action<CR>", keyopts)
+			vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
 			require("lspsaga").setup({
 				lightbulb = {
 					enable = true,

@@ -4,6 +4,10 @@ return {
 		"niuiic/core.nvim",
 	},
 	config = function()
+		local keyopts = { noremap = true, silent = true }
+		-- translate
+		vim.keymap.set("v", "<leader>;t", "<cmd>TransToZH<CR>", keyopts)
+		vim.keymap.set("n", "<leader>;t", "<cmd>TransToEN<CR>", keyopts)
 		require("translate").setup({
 			output = {
 				float = {

@@ -26,19 +26,8 @@ vim.keymap.set("n", "<leader>;<S-h>", ":vertical resize +10<CR>", keyopts)
 vim.keymap.set("n", "<S-c>", ":close<CR>", keyopts)
 vim.keymap.set("n", "<S-d>", ":bdelete<CR>", keyopts)
 
--- formatter
-vim.keymap.set("n", "<leader>F", ":Format<CR>", keyopts)
-
--- lsp
-vim.keymap.set("n", "<leader>;1", ":Lspsaga code_action<CR>", keyopts)
-vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
-
 -- clipboard register
 vim.keymap.set("v", "<C-c>", '"+y', keyopts)
-
--- translate
-vim.keymap.set("v", "<leader>;t", "<cmd>TransToZH<CR>", keyopts)
-vim.keymap.set("n", "<leader>;t", "<cmd>TransToEN<CR>")
 
 -- tab and buffer
 vim.keymap.set("n", "<tab>", ":bnext<CR>", keyopts)
