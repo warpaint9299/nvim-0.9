@@ -15,7 +15,7 @@ return {
 	},
 	keys = {
 		{
-			"<C-LeftMouse>",
+			"<C-RightMouse>",
 			"<Cmd>MultipleCursorsMouseAddDelete<CR>",
 			mode = { "n", "i" },
 			desc = "Add or remove cursor",

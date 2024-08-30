@@ -38,12 +38,6 @@ return {
 		require("lspconfig")["html"].setup({
 			capabilities = capabilities,
 		})
-		require("lspconfig")["jdtls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["kotlin_language_server"].setup({
-			capabilities = capabilities,
-		})
 		require("lspconfig")["lua_ls"].setup({
 			capabilities = capabilities,
 		})

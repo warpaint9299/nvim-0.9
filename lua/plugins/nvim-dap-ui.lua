@@ -11,8 +11,17 @@ return {
 				"DapBreakpoint",
 				{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
 			)
-			vim.api.nvim_set_keymap("n", "<leader>p", ":DapToggleBreakpoint<CR>", { noremap = true, silent = true })
+			local keyopt = { noremap = true, silent = true }
+			vim.keymap.set("n", "<F5>", ":DapContinue<CR>", keyopt)
+			vim.keymap.set("n", "<F10>", ":DapStepOver<CR>", keyopt)
+			vim.keymap.set("n", "<F11>", ":DapStepInto<CR>", keyopt)
+			vim.keymap.set("n", "<F12>", ":DapStepOut<CR>", keyopt)
+			vim.keymap.set("n", "<Leader>b", ":DapToggleBreakpoint<CR>", keyopt)
+
 			local dap, dapui = require("dap"), require("dapui")
+
+			dapui.setup({})
+
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
 			end
