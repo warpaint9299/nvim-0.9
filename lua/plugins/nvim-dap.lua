@@ -4,6 +4,8 @@ return {
 		event = "LspAttach",
 		dependencies = {
 			"mfussenegger/nvim-dap",
+			"jay-babu/mason-nvim-dap.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
 			"nvim-neotest/nvim-nio",
 			"jbyuki/one-small-step-for-vimkind",
 		},
@@ -19,9 +21,10 @@ return {
 			vim.keymap.set("n", "<F12>", ":DapStepOut<CR>", keyopt)
 			vim.keymap.set("n", "<Leader>b", ":DapToggleBreakpoint<CR>", keyopt)
 
-			local dap, dapui = require("dap"), require("dapui")
+			local dap, dapui, dapmason = require("dap"), require("dapui"), require("mason-nvim-dap")
 
 			dapui.setup({})
+			dapmason.setup({})
 
 			dap.listeners.before.attach.dapui_config = function()
 				dapui.open()
@@ -82,7 +85,7 @@ return {
 				},
 			}
 
-			-- C / C++
+			-- C / Cpp / Rust
 			dap.adapters.lldb = {
 				type = "server",
 				port = "${port}",
@@ -98,19 +101,6 @@ return {
 					end,
 				},
 			}
-			dap.configurations.c = {
-				{
-					name = "Launch",
-					type = "lldb",
-					request = "launch",
-					program = function() -- Ask the user what executable wants to debug
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
-					end,
-					cwd = "${workspaceFolder}",
-					stopOnEntry = false,
-					args = {},
-				},
-			}
 			dap.configurations.cpp = {
 				{
 					name = "Launch",
@@ -124,6 +114,8 @@ return {
 					args = {},
 				},
 			}
+			dap.configurations.c = dap.configurations.cpp
+			dap.configurations.rust = dap.configurations.cpp
 
 			-- Python
 			dap.adapters.python = {

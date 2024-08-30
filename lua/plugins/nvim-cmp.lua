@@ -24,36 +24,6 @@ return {
 
 		vim.cmd([[let g:vsnip_snippet_dir = stdpath("config") .. "/snippets" ]])
 
-		local capabilities = require("cmp_nvim_lsp").default_capabilities()
-		-- Replace <YOUR_LSP_SERVER> with each lsp server you've enabled.
-		require("lspconfig")["bashls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["clangd"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["cssls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["html"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["lua_ls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["marksman"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["vimls"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["pyright"].setup({
-			capabilities = capabilities,
-		})
-		require("lspconfig")["rust_analyzer"].setup({
-			capabilities = capabilities,
-		})
-
 		-- Set configuration for specific filetype.
 		cmp.setup.filetype("gitcommit", {
 			sources = cmp.config.sources({

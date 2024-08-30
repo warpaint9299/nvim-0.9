@@ -1,17 +1,82 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+			"hrsh7th/nvim-cmp",
+			"hrsh7th/cmp-nvim-lsp",
+		},
 		config = function()
-			require("lspconfig").bashls.setup({})
-			require("lspconfig").clangd.setup({})
-			require("lspconfig").cssls.setup({})
-			require("lspconfig").html.setup({})
-			require("lspconfig").lua_ls.setup({})
-			require("lspconfig").marksman.setup({})
-			require("lspconfig").pyright.setup({})
-			require("lspconfig").rust_analyzer.setup({})
-			require("lspconfig").texlab.setup({})
-			require("lspconfig").vimls.setup({})
+			require("mason").setup({})
+			require("mason-lspconfig").setup({})
+			require("mason-tool-installer").setup({
+				ensure_installed = {
+					"bash-debug-adapter",
+					"bash-language-server",
+					"clang-format",
+					"clangd",
+					"codelldb",
+					"css-lsp",
+					"debugpy",
+					"google-java-format",
+					"html-lsp",
+					"java-debug-adapter",
+					"java-test",
+					"jdtls",
+					"kotlin-debug-adapter",
+					"kotlin-language-server",
+					"latexindent",
+					"lua-language-server",
+					"marksman",
+					"prettier",
+					"pyright",
+					"rust-analyzer",
+					"stylua",
+					"texlab",
+					"typescript-language-server",
+					"vim-language-server",
+				},
+				auto_update = false,
+				run_on_start = true,
+				start_delay = 3000,
+				integrations = {
+					["mason-lspconfig"] = true,
+					["mason-nvim-dap"] = true,
+				},
+			})
+			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+			require("lspconfig").bashls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").clangd.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").cssls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").html.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").lua_ls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").marksman.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").pyright.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").rust_analyzer.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").texlab.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").vimls.setup({
+				capabilities = capabilities,
+			})
 		end,
 	},
 	{
