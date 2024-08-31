@@ -4,6 +4,8 @@ return {
 		projects = { -- define project roots
 			"~/Workspace/*",
 			"~/Documents/Notes/*",
+			"~/Documents/Notes/books/*",
+			"~/Documents/Notes/programming/*",
 		},
 		-- Path to store history and sessions
 		datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/

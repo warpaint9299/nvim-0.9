@@ -134,14 +134,38 @@ return {
 		end,
 	},
 	{
-		"https://git.sr.ht/~whynothugo/lsp_lines.nvim",
-		event = "LspAttach",
+		"rachartier/tiny-inline-diagnostic.nvim",
+		event = "VeryLazy",
 		config = function()
-			vim.diagnostic.config({
-				virtual_text = false,
-				virtual_lines = { only_current_line = true },
+			vim.diagnostic.config({ virtual_text = false })
+			require("tiny-inline-diagnostic").setup({
+				signs = {
+					left = "",
+					right = "",
+					diag = "●",
+					arrow = "    ",
+					up_arrow = "    ",
+					vertical = " │",
+					vertical_end = " └",
+				},
+				options = {
+					-- Show the source of the diagnostic.
+					show_source = true,
+					-- If multiple diagnostics are under the cursor, display all of them.
+					multiple_diag_under_cursor = true,
+					overflow = {
+						-- Manage the overflow of the message.
+						--    - wrap: when the message is too long, it is then displayed on multiple lines.
+						--    - none: the message will not be truncated.
+						--    - oneline: message will be displayed entirely on one line.
+						mode = "wrap",
+					},
+					format = nil,
+					virt_texts = {
+						priority = 2048,
+					},
+				},
 			})
-			require("lsp_lines").setup()
 		end,
 	},
 	{
