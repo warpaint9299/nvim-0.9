@@ -25,11 +25,62 @@ return {
 		},
 	},
 	{
-		"ggandor/lightspeed.nvim",
+		"folke/flash.nvim",
 		event = "VeryLazy",
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = { forward = true, wrap = false, multi_window = false },
+					})
+				end,
+				desc = "Flash Forward search only",
+			},
+			{
+				"S",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = { forward = false, wrap = false, multi_window = false },
+					})
+				end,
+				desc = "Flash Backward search only",
+			},
+			{
+				"ga",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+			{
+				"\\",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						search = { mode = "search", max_length = 0 },
+						label = { after = { 0, 0 } },
+						pattern = "^",
+					})
+				end,
+				desc = "Flash Jump to a line",
+			},
+			{
+				"#",
+				mode = { "n", "x", "o" },
+				function()
+					require("flash").jump({
+						pattern = vim.fn.expand("<cword>"),
+					})
+				end,
+				desc = "Flash Initialize It with the word under the cursor",
+			},
+		},
 		config = function()
-			require("lightspeed").setup({})
-			vim.api.nvim_set_keymap("n", "<leader>l", ":set hlsearch!<CR>", { noremap = true, silent = true })
+			require("flash").setup({})
 		end,
 	},
 }
