@@ -39,6 +39,8 @@ return {
 			},
 			-- table: additional groups that should be cleared
 			extra_groups = {
+				"NormalFloat",
+				"NvimTreeNormal",
 				"Pmenu",
 				"TermCursor",
 				"TermCursorNC",

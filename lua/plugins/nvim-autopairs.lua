@@ -13,7 +13,7 @@ return {
 				enable_afterquote = true, -- add bracket pairs after quote
 				enable_check_bracket_line = true, --- check bracket in same line
 				enable_bracket_in_quote = true, --
-				enable_abbr = false, -- trigger abbreviation
+				enable_abbr = true, -- trigger abbreviation
 				break_undo = true, -- switch for basic rule break undo sequence
 				check_ts = true,
 				map_cr = true,

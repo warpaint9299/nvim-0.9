@@ -29,6 +29,7 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("lightspeed").setup({})
+			vim.api.nvim_set_keymap("n", "<leader>l", ":set hlsearch!<CR>", { noremap = true, silent = true })
 		end,
 	},
 }
