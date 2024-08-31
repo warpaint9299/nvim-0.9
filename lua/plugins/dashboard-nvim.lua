@@ -60,7 +60,7 @@ return {
 					{
 						icon = "󰗍 ",
 						icon_hl = "Title",
-						desc = "Recent File",
+						desc = "Recent Files",
 						desc_hl = "String",
 						action = "Telescope oldfiles",
 						key = "r",
