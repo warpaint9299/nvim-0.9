@@ -10,7 +10,24 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-		require("nvim-tree").setup({})
+		require("nvim-tree").setup({
+			renderer = {
+				highlight_git = true,
+				icons = {
+					glyphs = {
+						git = {
+							unstaged = "",
+							staged = "S",
+							unmerged = "",
+							renamed = "➜",
+							untracked = "U",
+							deleted = "",
+							ignored = "◌",
+						},
+					},
+				},
+			},
+		})
 
 		vim.cmd([[nnoremap <silent> <leader>\ :NvimTreeToggle<CR>]])
 	end,
