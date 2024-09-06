@@ -6,6 +6,7 @@ return {
 		require("dashboard").setup({
 			theme = "hyper",
 			shortcut_type = "letter",
+			change_to_vcs_root = true,
 			config = {
 				header = {
 					"     .-') _   ('-.                     (`-.           _   .-')    ",
