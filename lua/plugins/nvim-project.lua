@@ -4,6 +4,8 @@ return {
 	opts = {
 		projects = { -- define project roots
 			"~/Workspace/*",
+			"~/.dotfiles/*",
+			"~/.dotfiles/.config/*",
 			"~/Documents/Notes/*",
 			"~/Documents/Notes/books/*",
 			"~/Documents/Notes/programming/*",

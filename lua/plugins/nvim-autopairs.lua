@@ -29,4 +29,17 @@ return {
 			require("nvim-ts-autotag").setup()
 		end,
 	},
+	{
+		"ysmb-wtsg/in-and-out.nvim",
+		event = "InsertEnter",
+		keys = {
+			{
+				"\\",
+				function()
+					require("in-and-out").in_and_out()
+				end,
+				mode = "i",
+			},
+		},
+	},
 }
