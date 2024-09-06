@@ -24,17 +24,26 @@
     "description": "html5 template."
   },
   "css": {
-    "prefix": ["link", "css"],
+    "prefix": [
+      "link",
+      "css"
+    ],
     "body": "<link rel=\"stylesheet\" href=\"${0:style.css}\"/>",
     "description": "css tag"
   },
   "script": {
-    "prefix": ["script", "javascript"],
+    "prefix": [
+      "script",
+      "javascript"
+    ],
     "body": "<script type=\"text/javascript\" src=\"${0:index.js}\" ></script>",
     "description": "javascript tag"
   },
   "Console": {
-    "prefix": ["console", "log"],
+    "prefix": [
+      "console",
+      "log"
+    ],
     "body": "console.log($1)$0",
     "description": "console.log()"
   }

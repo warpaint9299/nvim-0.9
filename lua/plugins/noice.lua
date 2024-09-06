@@ -13,8 +13,8 @@ return {
 		-- vim.config.lsp.signature.enabled = false
 		require("notify").setup({
 			background_colour = "#0e0e0e",
-			stages = "slide",
-			timeout = 3000,
+			stages = "fade_in_slide_out",
+			timeout = 1000,
 			top_down = false,
 			icons = {
 				ERROR = " ",
@@ -22,12 +22,13 @@ return {
 				INFO = " ",
 				DEBUG = " ",
 			},
-			render = "simple",
+			render = "wrapped-compact",
+			max_width = 50,
 		})
 
 		require("noice").setup({
 			cmdline = {
-				enabled = false, -- enables the Noice cmdline UI
+				enabled = true, -- enables the Noice cmdline UI
 				view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
 				opts = {}, -- global options for the cmdline. See section on views
 				---@type table<string, CmdlineFormat>
@@ -50,7 +51,7 @@ return {
 			messages = {
 				-- NOTE: If you enable messages, then the cmdline is enabled automatically.
 				-- This is a current Neovim limitation.
-				enabled = false, -- enables the Noice messages UI
+				enabled = true, -- enables the Noice messages UI
 				view = "notify", -- default view for messages
 				view_error = "notify", -- view for errors
 				view_warn = "notify", -- view for warnings

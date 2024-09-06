@@ -1,5 +1,6 @@
 return {
 	"coffebar/neovim-project",
+	event = "VimEnter",
 	opts = {
 		projects = { -- define project roots
 			"~/Workspace/*",

@@ -20,7 +20,7 @@ local function restore_cursor_position()
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "typescript" },
+	pattern = { "javascript", "typescript", "markdown", "yaml", "toml", "json" },
 	callback = function()
 		vim.opt.tabstop = 2
 		vim.opt.shiftwidth = 2

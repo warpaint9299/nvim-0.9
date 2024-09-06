@@ -2,7 +2,7 @@
   "Main": {
     "prefix": "main",
     "body": [
-      "fn main() {",
+      "public static void main(final String[] args) {",
       "\t$0",
       "}"
     ],
@@ -10,7 +10,7 @@
   },
   "Hello world": {
     "prefix": "say hello world",
-    "body": "println!(\"Hello, world!\");",
+    "body": "System.out.println(\"Hello, world!\");",
     "description": "say hello world"
   }
 }

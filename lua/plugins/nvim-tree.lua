@@ -10,8 +10,7 @@ return {
 		vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
-		require("nvim-tree").setup({
-		})
+		require("nvim-tree").setup({})
 
 		vim.cmd([[nnoremap <silent> <leader>\ :NvimTreeToggle<CR>]])
 	end,
