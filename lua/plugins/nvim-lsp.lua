@@ -26,7 +26,6 @@ return {
 					"google-java-format",
 					"gopls",
 					"gradle-language-server",
-					"grammarly-languageserver",
 					"html-lsp",
 					"java-debug-adapter",
 					"java-test",
@@ -78,9 +77,6 @@ return {
 				capabilities = capabilities,
 			})
 			require("lspconfig").gradle_ls.setup({
-				capabilities = capabilities,
-			})
-			require("lspconfig").grammarly.setup({
 				capabilities = capabilities,
 			})
 			require("lspconfig").html.setup({
