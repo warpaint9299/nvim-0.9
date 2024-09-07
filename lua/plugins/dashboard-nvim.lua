@@ -4,6 +4,8 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	priority = 1024,
 	config = function()
+		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "Question" })
+		-- vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#FFAF00", bg = "NONE", bold = true })
 		require("dashboard").setup({
 			theme = "hyper",
 			shortcut_type = "letter",
