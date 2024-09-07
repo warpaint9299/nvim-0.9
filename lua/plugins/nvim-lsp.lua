@@ -13,6 +13,8 @@ return {
 			require("mason-lspconfig").setup({})
 			require("mason-tool-installer").setup({
 				ensure_installed = {
+					"asm-lsp",
+					"awk-language-server",
 					"bash-debug-adapter",
 					"bash-language-server",
 					"clang-format",
@@ -20,7 +22,11 @@ return {
 					"codelldb",
 					"css-lsp",
 					"debugpy",
+					"dot-language-server",
 					"google-java-format",
+					"gopls",
+					"gradle-language-server",
+					"grammarly-languageserver",
 					"html-lsp",
 					"java-debug-adapter",
 					"java-test",
@@ -30,6 +36,7 @@ return {
 					"latexindent",
 					"lua-language-server",
 					"marksman",
+					"perlnavigator",
 					"prettier",
 					"pyright",
 					"rust-analyzer",
@@ -46,7 +53,15 @@ return {
 					["mason-nvim-dap"] = true,
 				},
 			})
+
 			local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+			require("lspconfig").asm_lsp.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").awk_ls.setup({
+				capabilities = capabilities,
+			})
 			require("lspconfig").bashls.setup({
 				capabilities = capabilities,
 			})
@@ -56,6 +71,18 @@ return {
 			require("lspconfig").cssls.setup({
 				capabilities = capabilities,
 			})
+			require("lspconfig").dotls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").gopls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").gradle_ls.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").grammarly.setup({
+				capabilities = capabilities,
+			})
 			require("lspconfig").html.setup({
 				capabilities = capabilities,
 			})
@@ -63,6 +90,9 @@ return {
 				capabilities = capabilities,
 			})
 			require("lspconfig").marksman.setup({
+				capabilities = capabilities,
+			})
+			require("lspconfig").perlnavigator.setup({
 				capabilities = capabilities,
 			})
 			require("lspconfig").pyright.setup({
@@ -214,7 +244,8 @@ return {
 		config = function()
 			local keyopts = { noremap = true, silent = true }
 			-- lsp
-			vim.keymap.set("n", "<leader>;1", ":Lspsaga code_action<CR>", keyopts)
+			vim.keymap.set("n", "<leader>;a", ":Lspsaga code_action<CR>", keyopts)
+			vim.keymap.set("n", "<leader>;f", ":Lspsaga finder<CR>", keyopts)
 			vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
 			require("lspsaga").setup({
 				lightbulb = {
