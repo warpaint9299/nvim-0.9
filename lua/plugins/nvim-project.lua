@@ -14,7 +14,7 @@ return {
 		datapath = vim.fn.stdpath("data"), -- ~/.local/share/nvim/
 		-- Load the most recent session on startup if not in the project directory
 		last_session_on_startup = false,
-		dashboard_mode = false,
+		dashboard_mode = true,
 		session_manager_opts = {
 			autosave_ignore_dirs = {
 				vim.fn.expand("~"), -- don't create a session for $HOME/

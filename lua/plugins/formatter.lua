@@ -113,7 +113,6 @@ return {
 							exe = "prettier",
 							args = {
 								"--tab-width 2",
-								"--print-width 7",
 								"--bracket-spacing",
 								"--bracket-same-line",
 								"--arrow-parens always",
@@ -130,7 +129,6 @@ return {
 							exe = "prettier",
 							args = {
 								"--tab-width 2",
-								"--print-width 7",
 								"--bracket-spacing",
 								"--bracket-same-line",
 								"--arrow-parens always",
@@ -164,7 +162,6 @@ return {
 							exe = "prettier",
 							args = {
 								"--tab-width 2",
-								"--print-width 7",
 								"--bracket-spacing",
 								"--bracket-same-line",
 								"--arrow-parens always",

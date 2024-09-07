@@ -11,9 +11,23 @@ return {
 		vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
 
 		require("nvim-tree").setup({
+			view = {
+				side = "right",
+				width = 30,
+			},
 			renderer = {
 				highlight_git = true,
 				icons = {
+					web_devicons = {
+						file = {
+							enable = true,
+							color = true,
+						},
+						folder = {
+							enable = true,
+							color = true,
+						},
+					},
 					glyphs = {
 						git = {
 							unstaged = "",
