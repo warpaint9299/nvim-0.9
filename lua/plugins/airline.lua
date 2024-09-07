@@ -20,10 +20,11 @@ return {
 			let g:airline#extensions#nvimlsp#warning_symbol = ' '
 			let g:airline#extensions#nvimlsp#show_line_numbers = 0
 			let g:airline#extensions#tabline#enabled = 1
+			let g:airline#extensions#tabline#fnamemod = ':t'
 			let g:airline#extensions#tabline#left_sep = ' '
 			let g:airline#extensions#tabline#left_alt_sep = ' '
 			let g:airline#extensions#tabline#formatter = 'default'
-			let g:airline#extensions#tabline#left_sep = ""
+			let g:airline#extensions#tabline#left_sep = " "
 			let g:airline#extensions#tabline#right_sep = ""
 			let g:airline#extensions#tabline#show_close_button = 0
 			let g:airline#extensions#tabline#show_tabs = 1
