@@ -145,7 +145,7 @@ return {
 				{ name = "path" },
 			}, {
 				{ name = "buffer" },
-				{ name = "sql" },
+				-- { name = "sql" },
 				{ name = "vimtex" },
 			}),
 			view = {

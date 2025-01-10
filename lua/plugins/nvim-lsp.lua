@@ -161,7 +161,7 @@ return {
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "VeryLazy",
+		event = "LspAttach",
 		config = function()
 			vim.diagnostic.config({ virtual_text = false })
 			require("tiny-inline-diagnostic").setup({
@@ -188,7 +188,7 @@ return {
 					},
 					format = nil,
 					virt_texts = {
-						priority = 2048,
+						priority = 9999,
 					},
 				},
 			})
