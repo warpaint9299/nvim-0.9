@@ -29,6 +29,16 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "S", "s", "asm" },
+	callback = function()
+		vim.opt.autoindent = false
+		vim.opt.smartindent = false
+		vim.opt.cindent = false
+		vim.opt.indentexpr = ""
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = "*",
 	callback = function()
 		-- r insert the star when typing <Enter> in Insert mode
