@@ -31,6 +31,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "S", "s", "asm" },
 	callback = function()
+		vim.opt.iskeyword = "@,48-57,192-255"
 		vim.opt.autoindent = false
 		vim.opt.smartindent = false
 		vim.opt.cindent = false
