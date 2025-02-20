@@ -161,9 +161,9 @@ return {
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		event = "LspAttach",
+		event = "VeryLazy", -- Or `LspAttach`
+		priority = 1000, -- needs to be loaded in first
 		config = function()
-			vim.diagnostic.config({ virtual_text = false })
 			require("tiny-inline-diagnostic").setup({
 				signs = {
 					left = "",
@@ -174,24 +174,65 @@ return {
 					vertical = " │",
 					vertical_end = " └",
 				},
-				options = {
-					-- Show the source of the diagnostic.
-					show_source = true,
-					-- If multiple diagnostics are under the cursor, display all of them.
-					multiple_diag_under_cursor = true,
-					overflow = {
-						-- Manage the overflow of the message.
-						--    - wrap: when the message is too long, it is then displayed on multiple lines.
-						--    - none: the message will not be truncated.
-						--    - oneline: message will be displayed entirely on one line.
-						mode = "wrap",
-					},
-					format = nil,
-					virt_texts = {
-						priority = 9999,
-					},
+				blend = {
+					factor = 0.22,
 				},
+				preset = "modern",
+				transparent_bg = false,
+				hi = {
+					error = "DiagnosticError",
+					warn = "DiagnosticWarn",
+					info = "DiagnosticInfo",
+					hint = "DiagnosticHint",
+					arrow = "NonText",
+					background = "CursorLine",
+					mixing_color = "None",
+				},
+				options = {
+					show_source = true,
+					use_icons_from_diagnostic = false,
+					add_messages = true,
+					throttle = 20,
+					softwrap = 30,
+					multilines = {
+						enabled = false,
+						always_show = false,
+					},
+
+					show_all_diags_on_cursorline = false,
+					enable_on_insert = false,
+					enable_on_select = false,
+					overflow = {
+						mode = "wrap",
+						padding = 0,
+					},
+					break_line = {
+						enabled = true,
+						after = 80,
+					},
+
+					-- Custom format function for diagnostic messages
+					-- Example:
+					-- format = function(diagnostic)
+					--     return diagnostic.message .. " [" .. diagnostic.source .. "]"
+					-- end
+					format = nil,
+
+					virt_texts = {
+						priority = 2048,
+					},
+					severity = {
+						vim.diagnostic.severity.ERROR,
+						vim.diagnostic.severity.WARN,
+						vim.diagnostic.severity.INFO,
+						vim.diagnostic.severity.HINT,
+					},
+
+					overwrite_events = nil,
+				},
+				disabled_ft = {}, -- List of filetypes to disable the plugin
 			})
+			vim.diagnostic.config({ virtual_text = false }) -- Only if needed in your configuration, if you already have native LSP diagnostics
 		end,
 	},
 	{
