@@ -208,7 +208,7 @@ return {
 					},
 					break_line = {
 						enabled = true,
-						after = 80,
+						after = 30,
 					},
 
 					-- Custom format function for diagnostic messages

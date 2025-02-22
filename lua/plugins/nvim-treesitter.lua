@@ -28,6 +28,7 @@ return {
 					"lua",
 					"llvm",
 					"make",
+					"latex",
 					"markdown",
 					"markdown_inline",
 					"nginx",

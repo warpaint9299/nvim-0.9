@@ -18,6 +18,7 @@ return {
 			vim.api.nvim_set_keymap("n", "<leader>fb", ":Telescope buffers<CR>", opt)
 			vim.api.nvim_set_keymap("n", "<leader>fg", ":Telescope live_grep<CR>", opt)
 			vim.api.nvim_set_keymap("n", "<leader>ff", ":Telescope find_files<CR>", opt)
+			vim.api.nvim_set_keymap("n", "<leader>fk", ":Telescope keymaps<CR>", opt)
 		end,
 	},
 	{
