@@ -4,6 +4,9 @@ return {
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	priority = 1024,
 	config = function()
+		if vim.g.neovide then
+			return
+		end
 		vim.api.nvim_set_hl(0, "DashboardHeader", { link = "Question" })
 		-- vim.api.nvim_set_hl(0, "DashboardHeader", { fg = "#FFAF00", bg = "NONE", bold = true })
 		require("dashboard").setup({

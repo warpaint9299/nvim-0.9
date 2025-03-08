@@ -1,3 +1,4 @@
+vim.env.TERMINAL = "st"
 vim.g.mapleader = " "
 vim.g.autoformat = true
 vim.opt.autowrite = true

@@ -29,6 +29,15 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "markdown", "yaml", "toml", "json" },
+	callback = function()
+		local keyopts = { noremap = true, silent = true }
+		vim.opt.relativenumber = false
+		vim.opt.number = false
+		vim.keymap.set("n", "<F2>", ":set number!<CR>:set relativenumber!<CR>", keyopts)
+	end,
+})
+vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "S", "s", "asm" },
 	callback = function()
 		vim.opt.iskeyword = "@,48-57,192-255"

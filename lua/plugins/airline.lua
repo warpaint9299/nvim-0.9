@@ -55,6 +55,6 @@ return {
 				vim.opt.laststatus = 0
 			end
 		end
-		vim.api.nvim_set_keymap("n", "<F2>", ":lua ToggleLastStatus()<CR>", { noremap = true, silent = true })
+		vim.api.nvim_set_keymap("n", "<F3>", ":lua ToggleLastStatus()<CR>", { noremap = true, silent = true })
 	end,
 }

@@ -38,3 +38,14 @@ vim.keymap.set("n", "<leader>;<S-tab>", ":tabprevious<CR>", keyopts)
 
 -- reload the nvim configuration
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", keyopts)
+
+-- the key of language translation
+vim.keymap.set("n", "<leader>t", ":lua TranslateTo(':zh')<CR>", keyopts)
+vim.keymap.set("n", "<leader>T", ":lua TranslateTo(':en')<CR>", keyopts)
+
+function TranslateTo(language_code)
+	local selection = vim.fn.getreg("+")
+	selection = '"' .. selection:gsub('"', '\\"') .. '"'
+	local command = "trans -b -e bing " .. language_code .. " " .. selection
+	vim.fn["asyncrun#run"](0, { mode = "quickfix" }, command)
+end

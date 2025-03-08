@@ -10,6 +10,9 @@ return {
 		"rcarriga/nvim-notify",
 	},
 	config = function()
+		if vim.g.neovide then
+			return
+		end
 		-- vim.config.lsp.signature.enabled = false
 		require("notify").setup({
 			background_colour = "#0e0e0e",
@@ -28,7 +31,7 @@ return {
 
 		require("noice").setup({
 			cmdline = {
-				enabled = true, -- enables the Noice cmdline UI
+				enabled = false, -- enables the Noice cmdline UI
 				view = "cmdline_popup", -- view for rendering the cmdline. Change to `cmdline` to get a classic cmdline at the bottom
 				opts = {}, -- global options for the cmdline. See section on views
 				---@type table<string, CmdlineFormat>
