@@ -95,10 +95,32 @@ return {
 				-- E.g.: opts = { equivalence_classes = {} }
 				opts = {
 					equivalence_classes = { " \t\r\n", "([{", ")]}", "'\"`" },
+					case_sensitive = false,
 				},
 			})
-			-- require("leap.user").set_repeat_keys("<enter>", "<backspace>")
-			require("leap.user").set_repeat_keys(";", ",")
+			local leap = require("leap")
+			leap.opts.preview_filter = function()
+				return false
+			end
+			local saved_hls
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "LeapEnter",
+				callback = function()
+					saved_hls = vim.o.hlsearch
+					vim.o.hlsearch = false
+					vim.cmd.hi("Cursor", "blend=100")
+					vim.opt.guicursor:append({ "a:Cursor/lCursor" })
+				end,
+			})
+			vim.api.nvim_create_autocmd("User", {
+				pattern = "LeapLeave",
+				callback = function()
+					vim.o.hlsearch = saved_hls
+					vim.cmd.hi("Cursor", "blend=0")
+					vim.opt.guicursor:remove({ "a:Cursor/lCursor" })
+				end,
+			})
+			require("leap.user").set_repeat_keys("<enter>", "<backspace>")
 			vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
 			vim.keymap.set("x", "s", "<Plug>(leap)")
 			vim.keymap.set("o", "s", "<Plug>(leap-forward)")

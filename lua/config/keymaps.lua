@@ -46,11 +46,10 @@ vim.keymap.set("n", "<leader>T", ":lua TranslateTo(':en')<CR>", keyopts)
 function TranslateTo(language_code)
 	local selection = vim.fn.getreg("+")
 	selection = '"' .. selection:gsub('"', '\\"') .. '"'
-	local command = "trans -b -e bing "
-		.. language_code
-		.. " "
-		.. selection
-		.. " && espeak-ng -v en-us-nyc "
-		.. selection
+	local command = "trans -b -e bing " .. language_code
+	-- .. " "
+	-- .. selection
+	-- .. " && espeak-ng -v en-us-nyc "
+	-- .. selection
 	vim.fn["asyncrun#run"](0, { mode = "quickfix" }, command)
 end
