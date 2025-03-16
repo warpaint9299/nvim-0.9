@@ -106,6 +106,19 @@ return {
 		end,
 	},
 	{
+		"nvimdev/lspsaga.nvim",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter", -- optional
+			"nvim-tree/nvim-web-devicons", -- optional
+		},
+		config = function()
+			require("lspsaga").setup({
+				lightbulb = { enable = true, sign = false },
+			})
+			vim.keymap.set({ "v", "n" }, "<leader>1", ":Lspsaga code_action<CR>", { silent = true })
+		end,
+	},
+	{
 		"mfussenegger/nvim-jdtls",
 	},
 	{
@@ -267,41 +280,6 @@ return {
 					Event = "",
 					Operator = "󰆕",
 					TypeParameter = "",
-				},
-			})
-		end,
-	},
-	{
-		"nvimdev/lspsaga.nvim",
-		event = "LspAttach",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter", -- optional
-			"nvim-tree/nvim-web-devicons", -- optional
-		},
-		config = function()
-			local keyopts = { noremap = true, silent = true }
-			-- lsp
-			vim.keymap.set("n", "<leader>;a", ":Lspsaga code_action<CR>", keyopts)
-			vim.keymap.set("n", "<leader>;f", ":Lspsaga finder<CR>", keyopts)
-			vim.keymap.set("n", "gd", ":Lspsaga goto_definition<CR>", keyopts)
-			require("lspsaga").setup({
-				lightbulb = {
-					enable = true,
-					sign = true,
-					virtual_text = false,
-					debounce = 10,
-					sign_priority = 20,
-				},
-				ui = {
-					winblend = 10,
-					border = "rounded",
-					code_action = "💡",
-					colors = {
-						normal_bg = "NONE",
-					},
-				},
-				beacon = {
-					enable = false,
 				},
 			})
 		end,

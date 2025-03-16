@@ -24,3 +24,8 @@ vim.opt.background = "dark"
 vim.opt.mousemodel = ""
 vim.opt.iskeyword = "@,48-57,_,192-255,-,>"
 vim.opt.clipboard:append({ "unnamed" })
+
+vim.fn.sign_define("DiagnosticSignError", { text = " ", texthl = "DiagnosticSignError" })
+vim.fn.sign_define("DiagnosticSignWarn", { text = " ", texthl = "DiagnosticSignWarn" })
+vim.fn.sign_define("DiagnosticSignInfo", { text = " ", texthl = "DiagnosticSignInfo" })
+vim.fn.sign_define("DiagnosticSignHint", { text = "󰌵", texthl = "DiagnosticSignHint" })
