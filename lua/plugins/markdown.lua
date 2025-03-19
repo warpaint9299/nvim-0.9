@@ -50,112 +50,93 @@ return {
 		end,
 	},
 	{
-		"OXY2DEV/markview.nvim",
-		lazy = false,
+		"MeanderingProgrammer/render-markdown.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
+		---@module 'render-markdown'
+		---@type render.md.UserConfig
 		config = function()
-			local presets = require("markview.presets")
-			require("markview").setup({
-				experimental = {
-					date_formats = {},
-					date_time_formats = {},
-
-					text_filetypes = {},
-					read_chunk_size = 1000,
-					link_open_alerts = false,
-					file_open_command = "tabnew",
-
-					list_empty_line_tolerance = 3,
+			require("render-markdown").setup({
+				enabled = true,
+				render_modes = { "n", "c", "t" },
+				log_level = "error",
+				log_runtime = false,
+				file_types = { "markdown" },
+				paragraph = {
+					-- Turn on / off paragraph rendering.
+					enabled = true,
+					-- Additional modes to render paragraphs.
+					render_modes = false,
+					-- Amount of margin to add to the left of paragraphs.
+					-- If a float < 1 is provided it is treated as a percentage of available window space.
+					left_margin = 0,
+					-- Minimum width to use for paragraphs.
+					min_width = 0,
 				},
-				preview = {
-					enable = true,
-					filetypes = { "md", "rmd", "quarto" },
-					ignore_buftypes = { "nofile" },
-					ignore_previews = {},
-
-					modes = { "n", "no", "c" },
-					hybrid_modes = {},
-					debounce = 50,
-					draw_range = { vim.o.lines, vim.o.lines },
-					edit_range = { 1, 0 },
-
-					callbacks = {},
-
-					splitview_winopts = { split = "bottom" },
+				link = {
+					-- Turn on / off inline link icon rendering.
+					enabled = true,
 				},
-				renderers = {},
-
-				html = {
-					enable = true,
-
-					container_elements = {},
-					headings = {},
-					void_elements = {},
+				code = {
+					-- Turn on / off code block & inline code rendering.
+					enabled = true,
+					-- Additional modes to render code blocks.
+					render_modes = false,
 				},
 				latex = {
-					enable = true,
-
-					blocks = {},
-					commands = {},
-					escapes = {},
-					fonts = {},
-					inlines = {},
-					parenthesis = {},
-					subscripts = {},
-					superscripts = {},
-					symbols = {},
-					texts = {},
+					-- Turn on / off latex rendering.
+					enabled = true,
+					-- Additional modes to render latex.
+					render_modes = false,
+					-- Executable used to convert latex formula to rendered unicode.
+					converter = "latex2text",
+					-- Highlight for latex blocks.
+					highlight = "RenderMarkdownMath",
+					-- Determines where latex formula is rendered relative to block.
+					-- | above | above latex block |
+					-- | below | below latex block |
+					position = "above",
+					-- Number of empty lines above latex blocks.
+					top_pad = 0,
+					-- Number of empty lines below latex blocks.
+					bottom_pad = 0,
 				},
-				markdown = {
-					enable = true,
-					block_quotes = {},
-					code_blocks = {},
-					headings = presets.headings.slanted,
-					horizontal_rules = {},
-					list_items = {},
-					metadata_plus = {},
-					metadata_minus = {},
-					tables = {},
+				on = {
+					-- Called when plugin initially attaches to a buffer.
+					attach = function() end,
+					-- Called after plugin renders a buffer.
+					render = function() end,
+					-- Called after plugin clears a buffer.
+					clear = function() end,
 				},
-				markdown_inline = {
-					enable = true,
-
-					block_references = {},
-					checkboxes = {},
-					emails = {},
-					embed_files = {},
-					entities = {},
-					escapes = {},
-					footnotes = {},
-					highlights = {},
-					hyperlinks = {},
-					images = {},
-					inline_codes = {},
-					internal_links = {},
-					uri_autolinks = {},
+				completions = {
+					-- Settings for coq_nvim completions source
+					coq = { enabled = false },
+					-- Settings for in-process language server completions
+					lsp = { enabled = false },
 				},
-				typst = {
-					enable = true,
-
-					codes = {},
-					escapes = {},
-					headings = {},
-					labels = {},
-					list_items = {},
-					math_blocks = {},
-					math_spans = {},
-					raw_blocks = {},
-					raw_spans = {},
-					reference_links = {},
-					subscripts = {},
-					superscript = {},
-					symbols = {},
-					terms = {},
-					url_links = {},
-				},
-				yaml = {
-					enable = true,
-
-					properties = {},
+				heading = {
+					-- Turn on / off heading icon & background rendering.
+					enabled = true,
+					-- Additional modes to render headings.
+					render_modes = false,
+					-- Turn on / off any sign column related rendering.
+					sign = true,
+					-- Replaces '#+' of 'atx_h._marker'.
+					-- Output is evaluated depending on the type.
+					-- | function | `value(context)`              |
+					-- | string[] | `cycle(value, context.level)` |
+					icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
+					signs = { "󰫎 " },
+					-- Determines how icons fill the available space.
+					-- | right   | '#'s are concealed and icon is appended to right side                          |
+					-- | inline  | '#'s are concealed and icon is inlined on left side                            |
+					-- | overlay | icon is left padded with spaces and inserted on left hiding any additional '#' |
+					position = "overlay",
+					-- Width of the heading background.
+					-- | block | width of the heading text |
+					-- | full  | full width of the window  |
+					-- Can also be a list of the above values evaluated by `clamp(value, context.level)`.
+					width = "block",
 				},
 			})
 		end,
