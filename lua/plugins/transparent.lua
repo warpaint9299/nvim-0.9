@@ -30,12 +30,12 @@ return {
 				"LineNr",
 				"NonText",
 				"SignColumn",
-				"CursorLine",
-				"CursorLineNr",
 				"StatusLine",
 				"StatusLineNC",
 				"EndOfBuffer",
 				"WinSeparator",
+				-- "CursorLine",
+				-- "CursorLineNr",
 			},
 			-- table: additional groups that should be cleared
 			extra_groups = {

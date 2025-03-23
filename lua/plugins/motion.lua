@@ -120,7 +120,6 @@ return {
 					vim.opt.guicursor:remove({ "a:Cursor/lCursor" })
 				end,
 			})
-			require("leap.user").set_repeat_keys("<enter>", "<backspace>")
 			vim.keymap.set("n", "s", "<Plug>(leap-anywhere)")
 			vim.keymap.set("x", "s", "<Plug>(leap)")
 			vim.keymap.set("o", "s", "<Plug>(leap-forward)")
