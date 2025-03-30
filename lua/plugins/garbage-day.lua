@@ -11,8 +11,8 @@ return {
 		event = "VeryLazy",
 		config = function()
 			require("garbage-day").setup({
-				aggressive_mode = true,
-				notifications = true,
+				aggressive_mode = false,
+				notifications = false,
 				excluded_lsp_clients = { "null-ls" },
 				retries = 4,
 			})
