@@ -128,7 +128,7 @@ return {
 					priority = 1024,
 				},
 				outline = {
-					layout = "float", -- float or normal default is normal when is float above options will
+					layout = "default", -- float or normal default is normal when is float above options will
 					keys = {
 						toggle_or_jump = "o", -- toggle or jump
 						quit = "q", -- quit outline window
