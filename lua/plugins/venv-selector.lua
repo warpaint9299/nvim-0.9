@@ -12,8 +12,8 @@ return {
 	event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
 	keys = {
 		-- Keymap to open VenvSelector to pick a venv.
-		{ "<leader>;vs", ":VenvSelect<CR>" },
+		{ "<leader>ps", ":VenvSelect<CR>" },
 		-- Keymap to retrieve the venv from a cache (the one previously used for the same project directory).
-		{ "<leader>;vc", ":VenvSelectCached<CR>" },
+		{ "<leader>pc", ":VenvSelectCached<CR>" },
 	},
 }

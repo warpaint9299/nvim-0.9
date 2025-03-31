@@ -19,7 +19,7 @@ return {
 			vim.keymap.set("n", "<F10>", ":DapStepOver<CR>", keyopt)
 			vim.keymap.set("n", "<F11>", ":DapStepInto<CR>", keyopt)
 			vim.keymap.set("n", "<F12>", ":DapStepOut<CR>", keyopt)
-			vim.keymap.set("n", "<Leader>b", ":DapToggleBreakpoint<CR>", keyopt)
+			vim.keymap.set("n", "<leader>bb", ":DapToggleBreakpoint<CR>", keyopt)
 
 			local dap, dapui, dapmason = require("dap"), require("dapui"), require("mason-nvim-dap")
 
@@ -27,9 +27,11 @@ return {
 			dapmason.setup({})
 
 			dap.listeners.before.attach.dapui_config = function()
+				vim.opt.laststatus = 3
 				dapui.open()
 			end
 			dap.listeners.before.launch.dapui_config = function()
+				vim.opt.laststatus = 3
 				dapui.open()
 			end
 			dap.listeners.before.event_terminated.dapui_config = function()
@@ -39,7 +41,7 @@ return {
 				dapui.close()
 			end
 
-			dap.set_log_level("ERROR")
+			dap.set_log_level("DEBUG")
 
 			-- Shell
 			dap.adapters.bashdb = {
@@ -219,6 +221,16 @@ return {
 				virt_text_win_col = nil, -- position the virtual text at a fixed window column (starting from the first text column) ,
 				-- e.g. 80 to position at column 80, see `:h nvim_buf_set_extmark()`
 			})
+		end,
+	},
+	{
+		"fasterius/simple-zoom.nvim",
+		priority = 10000,
+		config = function()
+			require("simple-zoom").setup({
+				hide_tabline = true,
+			})
+			vim.keymap.set("n", "<C-w>z", ":SimpleZoomToggle<CR>", { silent = true, nowait = true })
 		end,
 	},
 }

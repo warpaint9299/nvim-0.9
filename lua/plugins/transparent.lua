@@ -34,8 +34,6 @@ return {
 				"StatusLineNC",
 				"EndOfBuffer",
 				"WinSeparator",
-				-- "CursorLine",
-				-- "CursorLineNr",
 			},
 			-- table: additional groups that should be cleared
 			extra_groups = {
@@ -95,7 +93,10 @@ return {
 				"DapUIWinSelect",
 			},
 			-- table: groups you don't want to clear
-			exclude_groups = {},
+			exclude_groups = {
+				"CursorLine",
+				"CursorLineNr",
+			},
 			-- function: code to be executed after highlight groups are cleared
 			-- Also the user event "TransparentClear" will be triggered
 			on_clear = function() end,

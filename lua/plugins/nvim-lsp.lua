@@ -113,9 +113,30 @@ return {
 		},
 		config = function()
 			require("lspsaga").setup({
-				lightbulb = { enable = true, sign = false },
+				ui = {
+					code_action = "💡",
+				},
+				lightbulb = {
+					enable = true,
+					sign = false,
+					sign_priority = 2048,
+				},
+				implement = {
+					enable = true,
+					virtual_text = true,
+					priority = 1024,
+				},
+				outline = {
+					layout = "float", -- float or normal default is normal when is float above options will
+					keys = {
+						toggle_or_jump = "o", -- toggle or jump
+						quit = "q", -- quit outline window
+						jump = "e", -- jump to pos even on a expand/collapse node
+					},
+				},
 			})
-			vim.keymap.set({ "v", "n" }, "<leader>1", ":Lspsaga code_action<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "<C-space>", ":Lspsaga code_action<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "<leader>o", ":Lspsaga outline<CR>", { silent = true })
 		end,
 	},
 	{
@@ -174,22 +195,13 @@ return {
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		priority = 10000, -- needs to be loaded in first
+		-- priority = 10000, -- needs to be loaded in first
 		config = function()
 			require("tiny-inline-diagnostic").setup({
-				signs = {
-					left = "",
-					right = "",
-					diag = "●",
-					arrow = "    ",
-					up_arrow = "    ",
-					vertical = " │",
-					vertical_end = " └",
-				},
-				blend = {
-					factor = 0.22,
-				},
 				preset = "modern",
+				blend = {
+					factor = 0,
+				},
 				transparent_bg = false,
 				hi = {
 					error = "DiagnosticError",
