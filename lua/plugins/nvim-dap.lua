@@ -223,14 +223,4 @@ return {
 			})
 		end,
 	},
-	{
-		"fasterius/simple-zoom.nvim",
-		priority = 10000,
-		config = function()
-			require("simple-zoom").setup({
-				hide_tabline = true,
-			})
-			vim.keymap.set("n", "<C-w>z", ":SimpleZoomToggle<CR>", { silent = true, nowait = true })
-		end,
-	},
 }

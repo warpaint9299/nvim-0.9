@@ -23,8 +23,8 @@ vim.keymap.set("n", "<leader>;<S-l>", ":vertical resize -10<CR>", keyopts)
 vim.keymap.set("n", "<leader>;<S-h>", ":vertical resize +10<CR>", keyopts)
 
 -- keys of delete buffer or close tab
-vim.keymap.set("n", "<S-c>", ":close<CR>", keyopts)
-vim.keymap.set("n", "<S-d>", ":bdelete<CR>", keyopts)
+vim.keymap.set("n", "<S-c>", ":Bdelete menu<CR>", keyopts)
+vim.keymap.set("n", "<S-d>", ":Bdelete this<CR>", keyopts)
 
 -- clipboard register
 vim.keymap.set("v", "<C-c>", '"+y', keyopts)

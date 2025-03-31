@@ -107,6 +107,7 @@ return {
 	},
 	{
 		"nvimdev/lspsaga.nvim",
+		priority = 10000,
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter", -- optional
 			"nvim-tree/nvim-web-devicons", -- optional
@@ -136,7 +137,11 @@ return {
 				},
 			})
 			vim.keymap.set({ "v", "n" }, "<C-space>", ":Lspsaga code_action<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "gd", ":Lspsaga goto_definition<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "gD", ":Lspsaga goto_type_definition<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "gf", ":Lspsaga finder<CR>", { silent = true })
 			vim.keymap.set({ "v", "n" }, "<leader>o", ":Lspsaga outline<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "<leader>sd", ":Lspsaga show_buf_diagnostics<CR>", { silent = true })
 		end,
 	},
 	{
@@ -195,7 +200,7 @@ return {
 	},
 	{
 		"rachartier/tiny-inline-diagnostic.nvim",
-		-- priority = 10000, -- needs to be loaded in first
+		priority = 10000, -- needs to be loaded in first
 		config = function()
 			require("tiny-inline-diagnostic").setup({
 				preset = "modern",
@@ -215,6 +220,7 @@ return {
 				options = {
 					show_source = true,
 					use_icons_from_diagnostic = false,
+					set_arrow_to_diag_color = true,
 					add_messages = true,
 					throttle = 20,
 					softwrap = 30,
