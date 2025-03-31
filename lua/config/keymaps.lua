@@ -29,13 +29,6 @@ vim.keymap.set("n", "<S-d>", ":Bdelete this<CR>", keyopts)
 -- clipboard register
 vim.keymap.set("v", "<C-c>", '"+y', keyopts)
 
--- tab and buffer
-vim.keymap.set("n", "<tab>", ":bnext<CR>", keyopts)
-vim.keymap.set("n", "<S-tab>", ":bprevious<CR>", keyopts)
-vim.keymap.set("n", "<leader>te", ":tabedit<CR>", keyopts)
-vim.keymap.set("n", "<leader><tab>", ":tabnext<CR>", keyopts)
-vim.keymap.set("n", "<leader><S-tab>", ":tabprevious<CR>", keyopts)
-
 -- reload the nvim configuration
 vim.keymap.set("n", "<leader>sv", ":source $MYVIMRC<CR>", keyopts)
 

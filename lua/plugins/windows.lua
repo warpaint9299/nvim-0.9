@@ -21,6 +21,12 @@ return {
 		end,
 	},
 	{
+		"oberblastmeister/zoom.nvim",
+		config = function()
+			vim.keymap.set("n", "<C-w>Z", ":Zoom<CR>", { silent = true })
+		end,
+	},
+	{
 		"Asheq/close-buffers.vim",
 		config = function() end,
 	},
