@@ -4,4 +4,5 @@ return {
 	{ "ellisonleao/gruvbox.nvim", enabled = true },
 	{ "vim-airline/vim-airline", enable = true },
 	{ "folke/noice.nvim", enable = true },
+	{ "sphamba/smear-cursor.nvim", enable = false },
 }
