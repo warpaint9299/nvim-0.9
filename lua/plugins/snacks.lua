@@ -127,7 +127,8 @@ return {
 			{ "<leader>/", function() Snacks.picker.grep() end, desc = "Grep" },
 			{ "<leader>:", function() Snacks.picker.command_history() end, desc = "Command History" },
 			{ "<leader>n", function() Snacks.picker.notifications() end, desc = "Notification History" },
-			{ "<leader>e", function() Snacks.explorer(
+			{ "<leader>e", function()
+				Snacks.explorer(
 				{
 					replace_netrw = true,
 					finder = "explorer",
@@ -192,7 +193,8 @@ return {
 						},
 					},
 				}
-			) end, desc = "File Explorer" },
+			)
+			end, desc = "File Explorer" },
 			-- find
 			{ "<leader>fc", function() Snacks.picker.files({ cwd = vim.fn.stdpath("config") }) end, desc = "Find Config File" },
 			{ "<leader>fr", function() Snacks.picker.recent() end, desc = "Recent" },
@@ -228,8 +230,6 @@ return {
 			{ "<leader>cR", function() Snacks.rename.rename_file() end, desc = "Rename File" },
 			{ "<leader>un", function() Snacks.notifier.hide() end, desc = "Dismiss All Notifications" },
 			{ "<c-/>",      function() Snacks.terminal() end, desc = "Toggle Terminal" },
-			{ "]]",         function() Snacks.words.jump(vim.v.count1) end, desc = "Next Reference", mode = { "n", "t" } },
-			{ "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference", mode = { "n", "t" } },
 		},
 		-- stylua: ignore end
 		init = function()
@@ -260,7 +260,6 @@ return {
 						:map("<leader>ub")
 					Snacks.toggle.inlay_hints():map("<leader>uh")
 					Snacks.toggle.indent():map("<leader>ug")
-					Snacks.toggle.dim():map("<leader>Z")
 				end,
 			})
 		end,

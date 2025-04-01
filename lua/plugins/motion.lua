@@ -135,4 +135,8 @@ return {
 			})
 		end,
 	},
+	{
+		"Asheq/close-buffers.vim",
+		config = function() end,
+	},
 }

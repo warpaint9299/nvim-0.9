@@ -10,14 +10,14 @@ return {
 			require("windows").setup({
 				autowidth = {
 					enable = true,
-					winwidth = 5,
+					winwidth = 7,
 					filetype = {
 						help = 2,
 					},
 				},
 				ignore = {
-					buftype = { "quickfix", "nofile" },
-					filetype = { "snacks_picker_list", "NvimTree", "neo-tree", "undotree", "gundo" },
+					buftype = { "quickfix" },
+					filetype = { "NvimTree", "neo-tree", "undotree", "gundo", "snacks_layout_box" },
 				},
 				animation = {
 					enable = true,
@@ -40,9 +40,5 @@ return {
 		config = function()
 			vim.keymap.set("n", "<C-w>Z", ":Zoom<CR>", { silent = true })
 		end,
-	},
-	{
-		"Asheq/close-buffers.vim",
-		config = function() end,
 	},
 }

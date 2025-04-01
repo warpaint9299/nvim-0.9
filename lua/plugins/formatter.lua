@@ -39,43 +39,7 @@ return {
 					function()
 						return {
 							exe = "clang-format",
-							args = {
-								[[-style='{
-								BasedOnStyle: LLVM ,
-								IndentWidth: 4,
-								AlwaysBreakAfterReturnType: AllDefinitions,
-								BreakBeforeBraces: Linux,
-								BreakBeforeTernaryOperators: true,
-								BreakStringLiterals: true,
-								ColumnLimit: 0,
-								FixNamespaceComments: true,
-								IndentCaseBlocks: true,
-								IndentCaseLabels: true,
-								IndentGotoLabels: true,
-								BitFieldColonSpacing: Both,
-								AllowShortIfStatementsOnASingleLine: WithoutElse,
-								AllowShortEnumsOnASingleLine: true,
-								AllowShortBlocksOnASingleLine: Always,
-								AlignConsecutiveMacros: {
-									Enabled: true,
-									AcrossEmptyLines: true,
-									AlignCompound: true,
-									PadOperators: true
-								},
-								AlignConsecutiveShortCaseStatements: {
-									Enabled: true,
-									AcrossEmptyLines: true,
-									AlignCaseColons: true
-								},
-								AlignTrailingComments: {
-									Kind: Always,
-									OverEmptyLines: 1
-								},
-								AlignOperands: AlignAfterOperator,
-								BreakBeforeBinaryOperators: All,
-								RemoveBracesLLVM: true
-								}']],
-							},
+							args = { util.escape_path(util.get_current_buffer_file_path()) },
 							stdin = true,
 						}
 					end,
