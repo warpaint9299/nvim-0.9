@@ -80,3 +80,19 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	pattern = "*",
 	callback = restore_cursor_position,
 })
+
+vim.api.nvim_create_autocmd({ "LspAttach", "InsertLeave" }, {
+	callback = function()
+		if not vim.lsp.inlay_hint.is_enabled() then
+			vim.lsp.inlay_hint.enable(true)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "InsertEnter" }, {
+	callback = function()
+		if vim.lsp.inlay_hint.is_enabled() then
+			vim.lsp.inlay_hint.enable(false)
+		end
+	end,
+})

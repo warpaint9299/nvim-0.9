@@ -19,6 +19,7 @@ return {
 					"bash-language-server",
 					"clang-format",
 					"clangd",
+					"neocmakelsp",
 					"codelldb",
 					"css-lsp",
 					"debugpy",
@@ -65,6 +66,10 @@ return {
 				capabilities = capabilities,
 			})
 			require("lspconfig").clangd.setup({
+				capabilities = capabilities,
+				cmd = { "clangd", "--background-index", "--clang-tidy", "--log=verbose" },
+			})
+			require("lspconfig").neocmake.setup({
 				capabilities = capabilities,
 			})
 			require("lspconfig").cssls.setup({
@@ -128,7 +133,10 @@ return {
 					priority = 1024,
 				},
 				outline = {
-					layout = "default", -- float or normal default is normal when is float above options will
+					layout = "float", -- float or normal default is normal when is float above options will
+					auto_preview = true,
+					max_height = 0.9,
+					left_width = 0.4,
 					keys = {
 						toggle_or_jump = "o", -- toggle or jump
 						quit = "q", -- quit outline window
@@ -137,10 +145,7 @@ return {
 				},
 			})
 			vim.keymap.set({ "v", "n" }, "<C-space>", ":Lspsaga code_action<CR>", { silent = true })
-			vim.keymap.set({ "v", "n" }, "gd", ":Lspsaga goto_definition<CR>", { silent = true })
-			vim.keymap.set({ "v", "n" }, "gD", ":Lspsaga goto_type_definition<CR>", { silent = true })
-			vim.keymap.set({ "v", "n" }, "gf", ":Lspsaga finder<CR>", { silent = true })
-			vim.keymap.set({ "v", "n" }, "<leader>o", ":Lspsaga outline<CR>", { silent = true })
+			vim.keymap.set({ "v", "n" }, "<leader>ss", ":Lspsaga outline<CR>", { silent = true })
 			vim.keymap.set({ "v", "n" }, "<leader>sd", ":Lspsaga show_buf_diagnostics<CR>", { silent = true })
 		end,
 	},
@@ -220,7 +225,7 @@ return {
 				options = {
 					show_source = true,
 					use_icons_from_diagnostic = false,
-					set_arrow_to_diag_color = true,
+					set_arrow_to_diag_color = false,
 					add_messages = true,
 					throttle = 20,
 					softwrap = 30,
@@ -238,7 +243,7 @@ return {
 					},
 					break_line = {
 						enabled = true,
-						after = 30,
+						after = 40,
 					},
 
 					-- Custom format function for diagnostic messages

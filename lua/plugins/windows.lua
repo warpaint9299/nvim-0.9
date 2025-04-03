@@ -9,7 +9,7 @@ return {
 		config = function()
 			require("windows").setup({
 				autowidth = {
-					enable = true,
+					enable = false,
 					winwidth = 7,
 					filetype = {
 						help = 2,

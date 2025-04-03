@@ -1,7 +1,6 @@
 return {
 	{
 		"rcarriga/nvim-dap-ui",
-		event = "LspAttach",
 		dependencies = {
 			"mfussenegger/nvim-dap",
 			"jay-babu/mason-nvim-dap.nvim",
@@ -14,16 +13,110 @@ return {
 				"DapBreakpoint",
 				{ text = "", texthl = "DiagnosticSignError", linehl = "", numhl = "" }
 			)
-			local keyopt = { noremap = true, silent = true }
-			vim.keymap.set("n", "<F5>", ":DapContinue<CR>", keyopt)
-			vim.keymap.set("n", "<F10>", ":DapStepOver<CR>", keyopt)
-			vim.keymap.set("n", "<F11>", ":DapStepInto<CR>", keyopt)
-			vim.keymap.set("n", "<F12>", ":DapStepOut<CR>", keyopt)
-			vim.keymap.set("n", "<leader>bb", ":DapToggleBreakpoint<CR>", keyopt)
+			-- stylua: ignore start
+			vim.keymap.set("n", "<F5>", ":DapContinue<CR>", { noremap = true, silent = true, desc = "DapContinue" })
+			vim.keymap.set( "n", "<leader>o", ":DapStepOver<CR>", { noremap = true, silent = true, desc = "DapStepOver" })
+			vim.keymap.set( "n", "<leader>i", ":DapStepInto<CR>", { noremap = true, silent = true, desc = "DapStepInto" })
+			vim.keymap.set("n", "<leader>O", ":DapStepOut<CR>", { noremap = true, silent = true, desc = "DapStepOut" })
+			vim.keymap.set( "n", "<leader>b", ":DapToggleBreakpoint<CR>", { noremap = true, silent = true, desc = "DapToggleBreakpoint" })
+			vim.keymap.set("n", "<F7>", function() require("dapui").toggle() end, { noremap = true, desc = "DapUIToggle" })
+			vim.keymap.set("n", "<F9>", function() local args = { width = 80, enter = true }
+				local element =
+					vim.fn.confirm("Which element do you need to float?", "&Consle\n&Scopes\ns&Tacks\n&Watches", 2)
+				if element == 1 then
+					require("dapui").float_element("console", args)
+				elseif element == 2 then
+					require("dapui").float_element("scopes", args)
+				elseif element == 3 then
+					require("dapui").float_element("stacks", args)
+				elseif element == 4 then
+					require("dapui").float_element("watches", args)
+				end
+			end, { noremap = true, desc = "FloatDapElement" })
+			-- stylua: ignore end
 
 			local dap, dapui, dapmason = require("dap"), require("dapui"), require("mason-nvim-dap")
 
-			dapui.setup({})
+			dapui.setup({
+				controls = {
+					element = "repl",
+					enabled = true,
+					icons = {
+						disconnect = "",
+						pause = "",
+						play = "",
+						run_last = "",
+						step_back = "",
+						step_into = "",
+						step_out = "",
+						step_over = "",
+						terminate = "",
+					},
+				},
+				element_mappings = {},
+				expand_lines = true,
+				floating = {
+					border = "single",
+					mappings = {
+						close = { "q", "<Esc>" },
+					},
+				},
+				force_buffers = true,
+				icons = {
+					collapsed = "",
+					current_frame = "",
+					expanded = "",
+				},
+				layouts = {
+					{
+						elements = {
+							{
+								id = "scopes",
+								size = 0.25,
+							},
+							{
+								id = "stacks",
+								size = 0.25,
+							},
+							{
+								id = "breakpoints",
+								size = 0.25,
+							},
+							{
+								id = "watches",
+								size = 0.25,
+							},
+						},
+						position = "left",
+						size = 30,
+					},
+					{
+						elements = {
+							{
+								id = "repl",
+								size = 0.7,
+							},
+							{
+								id = "console",
+								size = 0.3,
+							},
+						},
+						position = "bottom",
+						size = 10,
+					},
+				},
+				mappings = {
+					expand = { "<CR>", "<2-LeftMouse>" },
+					open = "o",
+					remove = "d",
+					repl = "r",
+					toggle = "t",
+				},
+				render = {
+					indent = 1,
+					max_value_lines = 100,
+				},
+			})
 			dapmason.setup({})
 
 			dap.listeners.before.attach.dapui_config = function()
@@ -41,7 +134,7 @@ return {
 				dapui.close()
 			end
 
-			dap.set_log_level("DEBUG")
+			dap.set_log_level("INFO")
 
 			-- Shell
 			dap.adapters.bashdb = {
@@ -73,19 +166,60 @@ return {
 			}
 
 			-- Lua
+			-- dap.adapters["local-lua"] = {
+			-- 	type = "executable",
+			-- 	command = "node",
+			-- 	args = {
+			-- 		vim.fn.stdpath("data")
+			-- 			.. "/mason/packages/local-lua-debugger-vscode/extension/extension/debugAdapter.js",
+			-- 	},
+			-- 	enrich_config = function(config, on_config)
+			-- 		if not config["extensionPath"] then
+			-- 			local c = vim.deepcopy(config)
+			-- 			-- 💀 If this is missing or wrong you'll see
+			-- 			-- "module 'lldebugger' not found" errors in the dap-repl when trying to launch a debug session
+			-- 			c.extensionPath = vim.fn.stdpath("data")
+			-- 				.. "/mason/packages/local-lua-debugger-vscode/extension"
+			-- 			on_config(c)
+			-- 		else
+			-- 			on_config(config)
+			-- 		end
+			-- 	end,
+			-- }
+			-- dap.configurations.lua = {
+			-- 	{
+			-- 		name = "Current file (local-lua-dbg, lua)",
+			-- 		type = "local-lua",
+			-- 		request = "launch",
+			-- 		cwd = "${workspaceFolder}",
+			-- 		program = {
+			-- 			lua = "lua",
+			-- 			file = "${file}",
+			-- 		},
+			-- 		verbose = true,
+			-- 		args = {},
+			-- 	},
+			-- }
+
 			dap.adapters.nlua = function(callback, config)
 				callback({ type = "server", host = config.host or "127.0.0.1", port = config.port or 8086 })
 			end
+
 			dap.configurations.lua = {
 				{
 					type = "nlua",
 					request = "attach",
 					name = "Attach to running Neovim instance",
-					program = function()
-						pcall(require("osv").launch({ port = 8086 }))
-					end,
 				},
 			}
+
+			vim.keymap.set("n", "<leader>dl", function()
+				require("osv").launch({ port = 8086 })
+			end, { noremap = true, desc = 'require("osv").launch()' })
+			vim.keymap.set("n", "<leader>w", function()
+				local widgets = require("dap.ui.widgets")
+				widgets.hover()
+			end, { noremap = true, desc = 'require("dap.ui.widgets").hover()' })
 
 			-- C / Cpp / Rust
 			dap.adapters.lldb = {
@@ -109,7 +243,7 @@ return {
 					type = "lldb",
 					request = "launch",
 					program = function() -- Ask the user what executable wants to debug
-						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/bin/program", "file")
+						return vim.fn.input("Path to executable: ", vim.fn.getcwd() .. "/build/", "file")
 					end,
 					cwd = "${workspaceFolder}",
 					stopOnEntry = false,
