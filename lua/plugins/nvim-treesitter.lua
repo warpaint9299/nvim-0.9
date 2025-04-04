@@ -60,36 +60,7 @@ return {
 			"nvim-treesitter/nvim-treesitter",
 		},
 		config = function()
-			require("nvim-treesitter.configs").setup({
-				textobjects = {
-					move = {
-						enable = false,
-						set_jumps = true, -- whether to set jumps in the jumplist
-						goto_next_start = {
-							["]["] = "@function.outer",
-							["]{"] = "@class.outer",
-						},
-						goto_next_end = {
-							["]]"] = "@function.outer",
-							["]}"] = "@class.outer",
-						},
-						goto_previous_start = {
-							["[["] = "@functoin.outer",
-							["[{"] = "@class.outer",
-						},
-						goto_previous_end = {
-							["[]"] = "@functoin.outer",
-							["[}"] = "@class.outer",
-						},
-						goto_next = {
-							["]i"] = "@conditional.outer",
-						},
-						goto_previous = {
-							["[i"] = "@conditional.outer",
-						},
-					},
-				},
-			})
+			require("nvim-treesitter.configs").setup({})
 		end,
 	},
 }

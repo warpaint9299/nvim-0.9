@@ -89,6 +89,29 @@ return {
 			})
 			require("lspconfig").lua_ls.setup({
 				capabilities = capabilities,
+				settings = {
+					Lua = {
+						runtime = {
+							version = "LuaJIT", -- Neovim uses LuaJIT
+							path = vim.split(package.path, ";"),
+						},
+						diagnostics = {
+							globals = { "vim" }, -- Recognize 'vim' as a global variable
+						},
+						workspace = {
+							library = {
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
+								[vim.fn.stdpath("config")] = true,
+								[vim.fn.stdpath("data") .. "/lazy" .. "/nvim-cmp"] = true,
+								[vim.fn.stdpath("data") .. "/lazy" .. "/cmp-nvim-lsp"] = true,
+							},
+						},
+						telemetry = {
+							enable = false, -- Disable telemetry
+						},
+					},
+				},
 			})
 			require("lspconfig").marksman.setup({
 				capabilities = capabilities,
@@ -119,11 +142,14 @@ return {
 		},
 		config = function()
 			require("lspsaga").setup({
+				symbol_in_winbar = {
+					enable = false,
+				},
 				ui = {
 					code_action = "💡",
 				},
 				lightbulb = {
-					enable = true,
+					enable = false,
 					sign = false,
 					sign_priority = 2048,
 				},
@@ -305,5 +331,22 @@ return {
 				},
 			})
 		end,
+	},
+	{
+		"linux-cultist/venv-selector.nvim",
+		dependencies = { "neovim/nvim-lspconfig", "nvim-telescope/telescope.nvim", "mfussenegger/nvim-dap-python" },
+		config = function()
+			require("venv-selector").setup({
+				stay_on_this_version = true,
+				-- Your options go here
+				name = { "venv", ".venv" },
+				-- auto_refresh = false
+			})
+		end,
+		event = "VeryLazy", -- Optional: needed only if you want to type `:VenvSelect` without a keymapping
+		keys = {
+			-- Keymap to open VenvSelector to pick a venv.
+			{ "<leader>sv", ":VenvSelect<CR>" },
+		},
 	},
 }

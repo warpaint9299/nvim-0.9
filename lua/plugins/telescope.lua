@@ -3,7 +3,7 @@ return {
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"SalOrak/whaler",
+			"warpaint9299/whaler.nvim",
 		},
 		config = function()
 			local telescope = require("telescope")
@@ -59,10 +59,7 @@ return {
 						},
 						auto_cwd = true,
 						auto_file_explorer = true,
-						file_explorer_config = {
-							plugin_name = "ranger-nvim",
-							command = "Ranger",
-						},
+						file_explorer = "rnvimr",
 						theme = { -- Telescope theme default Whaler options.
 							results_title = false,
 							layout_strategy = "horizontal",
@@ -99,31 +96,31 @@ return {
 		vim.keymap.set("n", "<leader>gI", builtin.lsp_incoming_calls, {  noremap = true, desc = "Telescope Goto Incoming Calls" })
 		vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {  noremap = true, desc = "Telescope Goto References" })
 		vim.keymap.set("n", "<leader>gy", builtin.lsp_type_definitions, {  noremap = true, desc = "Telescope Goto T[y]pe Definition" })
-			-- stylua: ignore end
 		end,
+		-- stylua: ignore end
 	},
 	{
-		"kelly-lin/ranger.nvim",
+		"kevinhwang91/rnvimr",
 		config = function()
-			require("ranger-nvim").setup({
-				enable_cmds = true,
-				replace_netrw = true,
-				ui = {
-					-- "none": No border.
-					-- "single": A single line box.
-					-- "double": A double line box.
-					-- "rounded": Like "single", but with rounded corners ("╭" etc.).
-					-- "solid": Adds padding by a single whitespace cell.
-					-- "shadow": A drop shadow effect by blending with the background.
-					border = "double",
-					height = 0.7,
-					width = 0.7,
-					x = 0.5,
-					y = 0.5,
-				},
-			})
+			vim.g.rnvimr_action = {
+				["ot"] = "NvimEdit tabedit",
+				["oh"] = "NvimEdit split",
+				["ov"] = "NvimEdit vsplit",
+				["gw"] = "JumpNvimCwd",
+				["yw"] = "EmitRangerCwd",
+			}
+			vim.g.rnvimr_enable_ex = 1
+		    -- rnvimr command
+		    vim.api.nvim_create_user_command("RnvimrOpen", function(args)
+		    	if #args.fargs == 1 then
+		    		local arg = vim.fn.expand(args.fargs[1])
+		    		vim.api.nvim_call_function("rnvimr#open", { arg })
+		    	else
+		    		vim.api.nvim_command("RnvimrToggle")
+		    	end
+		    end, { nargs = "?" })
 			-- stylua: ignore
-			vim.api.nvim_set_keymap("n", "<leader>e", ":Ranger<CR>", { noremap = true, desc = "Ranger File Explorer" })
+			vim.api.nvim_set_keymap( "n", "<leader>e", ":RnvimrOpen<CR>", { noremap = true, desc = "Ranger File Explorer" })
 		end,
 	},
 }

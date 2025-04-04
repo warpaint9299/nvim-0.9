@@ -11,16 +11,16 @@ vim.keymap.set("i", "<RIGHT>", "<NOP>", keyopts)
 vim.keymap.set("i", "<C-l>", "<RIGHT>", keyopts)
 
 -- keys of moving window
-vim.keymap.set("n", "<leader>;k", ":wincmd K<CR>", keyopts)
-vim.keymap.set("n", "<leader>;j", ":wincmd J<CR>", keyopts)
-vim.keymap.set("n", "<leader>;l", ":wincmd L<CR>", keyopts)
-vim.keymap.set("n", "<leader>;h", ":wincmd H<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;k", ":wincmd K<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;j", ":wincmd J<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;l", ":wincmd L<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;h", ":wincmd H<CR>", keyopts)
 
 -- keys of resize window
-vim.keymap.set("n", "<leader>;<S-k>", ":horizontal resize +5<CR>", keyopts)
-vim.keymap.set("n", "<leader>;<S-j>", ":horizontal resize -5<CR>", keyopts)
-vim.keymap.set("n", "<leader>;<S-l>", ":vertical resize -10<CR>", keyopts)
-vim.keymap.set("n", "<leader>;<S-h>", ":vertical resize +10<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;<S-k>", ":horizontal resize +5<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;<S-j>", ":horizontal resize -5<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;<S-l>", ":vertical resize -10<CR>", keyopts)
+-- vim.keymap.set("n", "<leader>;<S-h>", ":vertical resize +10<CR>", keyopts)
 
 -- keys of delete buffer or close tab
 vim.keymap.set("n", "<S-c>", ":close<CR>:Bdelete hidden<CR>", keyopts)

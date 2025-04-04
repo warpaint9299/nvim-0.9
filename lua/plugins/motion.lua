@@ -157,6 +157,15 @@ return {
 		end,
 	},
 	{
+		"Bekaboo/dropbar.nvim",
+		-- optional, but required for fuzzy finder support
+		dependencies = {
+			"nvim-telescope/telescope-fzf-native.nvim",
+			build = "make",
+		},
+		config = function() end,
+	},
+	{
 		"Asheq/close-buffers.vim",
 		config = function() end,
 	},
