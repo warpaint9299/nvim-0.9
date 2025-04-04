@@ -109,7 +109,7 @@ return {
 				},
 				mapping = {
 					["<C-Space>"] = cmp.mapping.complete(),
-					["<C-e>"] = cmp.mapping.abort(),
+					["<C-a>"] = cmp.mapping.abort(),
 					["<CR>"] = cmp.mapping.confirm({ select = true, behavior = cmp.SelectBehavior.Select }),
 					["<Tab>"] = cmp.mapping(function(fallback)
 						if cmp.visible() then
@@ -220,7 +220,7 @@ return {
 				shadow_blend = 36, -- if you using shadow as border use this set the opacity
 				shadow_guibg = "Black", -- if you using shadow as border use this set the color e.g. 'Green' or '#121315'
 				timer_interval = 200, -- default timer check interval set to lower value if you want to reduce latency
-				toggle_key = nil, -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
+				toggle_key = "<C-x>", -- toggle signature on and off in insert mode,  e.g. toggle_key = '<M-x>'
 				toggle_key_flip_floatwin_setting = false, -- true: toggle floating_windows: true|false setting after toggle key pressed
 				-- false: floating_windows setup will not change, toggle_key will pop up signature helper, but signature
 				-- may not popup when typing depends on floating_window setting

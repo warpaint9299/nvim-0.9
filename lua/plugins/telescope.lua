@@ -13,9 +13,11 @@ return {
 			telescope.setup({
 				defaults = {
 					initial_mode = "normal",
-					layout_strategy = "horizontal",
+					layout_strategy = "vertical",
+					previewer = false,
 					layout_config = {
-						preview_width = 0.6,
+						height = 0.8,
+						width = 0.8,
 						prompt_position = "top",
 					},
 					sorting_strategy = "ascending",
@@ -45,7 +47,14 @@ return {
 						},
 					},
 				},
-				pickers = {},
+				pickers = {
+					find_files = {
+						theme = "ivy",
+					},
+					live_grep = {
+						theme = "ivy",
+					},
+				},
 				extensions = {
 					whaler = {
 						-- Whaler configuration
@@ -88,6 +97,7 @@ return {
 		vim.keymap.set("n", "<leader>sj", builtin.jumplist, {  noremap = true, desc = "Find Jumps" })
 		vim.keymap.set("n", "<leader>sk", builtin.keymaps, {  noremap = true, desc = "Find Keymaps" })
 		vim.keymap.set("n", "<leader>sm", builtin.man_pages, {  noremap = true, desc = "Find Man pages" })
+		vim.keymap.set("n", "<leader>so", builtin.oldfiles, {  noremap = true, desc = "Find Oldfiles"})
 		vim.keymap.set("n", "<leader>sr", builtin.registers, {  noremap = true, desc = "Find Registers" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, {  noremap = true, desc = "Find Visual selection or word"})
 		-- Lsp
@@ -110,15 +120,15 @@ return {
 				["yw"] = "EmitRangerCwd",
 			}
 			vim.g.rnvimr_enable_ex = 1
-		    -- rnvimr command
-		    vim.api.nvim_create_user_command("RnvimrOpen", function(args)
-		    	if #args.fargs == 1 then
-		    		local arg = vim.fn.expand(args.fargs[1])
-		    		vim.api.nvim_call_function("rnvimr#open", { arg })
-		    	else
-		    		vim.api.nvim_command("RnvimrToggle")
-		    	end
-		    end, { nargs = "?" })
+			-- rnvimr command
+			vim.api.nvim_create_user_command("RnvimrOpen", function(args)
+				if #args.fargs == 1 then
+					local arg = vim.fn.expand(args.fargs[1])
+					vim.api.nvim_call_function("rnvimr#open", { arg })
+				else
+					vim.api.nvim_command("RnvimrToggle")
+				end
+			end, { nargs = "?" })
 			-- stylua: ignore
 			vim.api.nvim_set_keymap( "n", "<leader>e", ":RnvimrOpen<CR>", { noremap = true, desc = "Ranger File Explorer" })
 		end,
