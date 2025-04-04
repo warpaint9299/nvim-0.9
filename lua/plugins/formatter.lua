@@ -2,6 +2,7 @@ return {
 	"mhartington/formatter.nvim",
 	config = function()
 		local util = require("formatter.util")
+		vim.keymap.set("n", "<leader>f", ":FormatWrite<CR>", { silent = true, desc = "Format File" })
 		require("formatter").setup({
 			-- Enable or disable logging
 			logging = false,

@@ -163,7 +163,34 @@ return {
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "make",
 		},
-		config = function() end,
+		config = function()
+			local sources = require("dropbar.sources")
+			local utils = require("dropbar.utils")
+
+			require("dropbar").setup({
+				bar = {
+					sources = function(buf, _)
+						if vim.bo[buf].ft == "markdown" then
+							return { sources.markdown }
+						end
+						if vim.bo[buf].buftype == "terminal" then
+							return { sources.terminal }
+						end
+						return {
+							sources.path,
+							utils.source.fallback({
+								sources.lsp,
+							}),
+						}
+					end,
+				},
+				sources = {
+					path = {
+						max_depth = 2,
+					},
+				},
+			})
+		end,
 	},
 	{
 		"Asheq/close-buffers.vim",
