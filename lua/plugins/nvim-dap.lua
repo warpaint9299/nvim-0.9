@@ -216,7 +216,7 @@ return {
 			vim.keymap.set("n", "<leader>dl", function()
 				require("osv").launch({ port = 8086 })
 			end, { noremap = true, desc = 'require("osv").launch()' })
-			vim.keymap.set("n", "<leader>w", function()
+			vim.keymap.set("n", "<leader>dw", function()
 				local widgets = require("dap.ui.widgets")
 				widgets.hover()
 			end, { noremap = true, desc = 'require("dap.ui.widgets").hover()' })
