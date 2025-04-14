@@ -24,6 +24,16 @@ return {
 			vim.cmd([[let g:vsnip_snippet_dir = stdpath("config") .. "/snippets" ]])
 
 			-- Set configuration for specific filetype.
+			cmp.setup.filetype({ "markdown", "text" }, {
+				experimental = {
+					ghost_text = false,
+				},
+				sources = cmp.config.sources({
+					{ name = "vsnip" },
+					{ name = "path" },
+				}),
+			})
+
 			cmp.setup.filetype("gitcommit", {
 				sources = cmp.config.sources({
 					{ name = "git" },
@@ -33,6 +43,7 @@ return {
 			})
 
 			cmp.setup.filetype({ "dap-repl", "dapui_watches", "dapui_hover" }, {
+				mapping = cmp.mapping.preset.cmdline(),
 				sources = {
 					{ name = "dap" },
 				},
@@ -82,7 +93,10 @@ return {
 				enabled = function()
 					return vim.api.nvim_buf_get_option(0, "buftype") ~= "prompt" or require("cmp_dap").is_dap_buffer()
 				end,
-				experimental = { ghost_text = true },
+				experimental = {
+					ghost_text = true,
+				},
+				filetype = {},
 				formatting = {
 					format = function(entry, vim_item)
 						if vim.tbl_contains({ "path" }, entry.source.name) then

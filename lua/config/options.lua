@@ -19,6 +19,8 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.autoindent = true
 vim.opt.wrapscan = true
+vim.opt.textwidth = 80
+vim.opt.colorcolumn = "-10,-5"
 vim.opt.encoding = "utf-8"
 vim.opt.iskeyword = "@,48-57,_,192-255,-,>"
 vim.opt.clipboard:append({ "unnamed" })

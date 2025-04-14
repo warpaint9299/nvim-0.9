@@ -56,7 +56,7 @@ return {
 		---@type render.md.UserConfig
 		config = function()
 			require("render-markdown").setup({
-				enabled = true,
+				enabled = false,
 				render_modes = { "n", "c", "t" },
 				log_level = "error",
 				log_runtime = false,
@@ -136,7 +136,7 @@ return {
 					-- | block | width of the heading text |
 					-- | full  | full width of the window  |
 					-- Can also be a list of the above values evaluated by `clamp(value, context.level)`.
-					width = "block",
+					width = "full",
 				},
 			})
 		end,

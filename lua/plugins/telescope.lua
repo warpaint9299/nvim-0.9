@@ -101,11 +101,11 @@ return {
 		vim.keymap.set("n", "<leader>sr", builtin.registers, {  noremap = true, desc = "Find Registers" })
 		vim.keymap.set("n", "<leader>sw", builtin.grep_string, {  noremap = true, desc = "Find Visual selection or word"})
 		-- Lsp
-		vim.keymap.set("n", "<leader>gd", builtin.lsp_definitions, {  noremap = true, desc = "Telescope Goto Definition" })
-		vim.keymap.set("n", "<leader>gi", builtin.lsp_implementations, {  noremap = true, desc = "Telescope Goto Implementation" })
-		vim.keymap.set("n", "<leader>gI", builtin.lsp_incoming_calls, {  noremap = true, desc = "Telescope Goto Incoming Calls" })
-		vim.keymap.set("n", "<leader>gr", builtin.lsp_references, {  noremap = true, desc = "Telescope Goto References" })
-		vim.keymap.set("n", "<leader>gy", builtin.lsp_type_definitions, {  noremap = true, desc = "Telescope Goto T[y]pe Definition" })
+		vim.keymap.set("n", "gd", builtin.lsp_definitions, {  noremap = true, desc = "Telescope Goto Definition" })
+		vim.keymap.set("n", "gi", builtin.lsp_implementations, {  noremap = true, desc = "Telescope Goto Implementation" })
+		vim.keymap.set("n", "gI", builtin.lsp_incoming_calls, {  noremap = true, desc = "Telescope Goto Incoming Calls" })
+		vim.keymap.set("n", "gr", builtin.lsp_references, {  noremap = true, desc = "Telescope Goto References" })
+		vim.keymap.set("n", "gy", builtin.lsp_type_definitions, {  noremap = true, desc = "Telescope Goto T[y]pe Definition" })
 		end,
 		-- stylua: ignore end
 	},

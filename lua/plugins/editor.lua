@@ -1,5 +1,12 @@
 return {
 	{
+		"Bekaboo/deadcolumn.nvim",
+		config = function()
+			vim.opt.colorcolumn = "80"
+			require("deadcolumn").setup()
+		end,
+	},
+	{
 		"NvChad/nvim-colorizer.lua",
 		config = function()
 			require("colorizer").setup({
@@ -166,7 +173,7 @@ return {
 		event = "InsertEnter",
 		config = function()
 			require("nvim-autopairs").setup({
-				disable_filetype = { "TelescopePrompt", "spectre_panel" },
+				disable_filetype = { "TelescopePrompt", "spectre_panel", "text", "markdown" },
 				disable_in_macro = true,
 				disable_in_visualblock = true, -- disable when insert after visual block mode
 				disable_in_replace_mode = true,

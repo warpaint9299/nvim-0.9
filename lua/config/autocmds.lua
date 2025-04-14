@@ -20,8 +20,17 @@ local function restore_cursor_position()
 end
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "javascript", "typescript", "markdown", "yaml", "toml", "json" },
+	pattern = { "text", "markdown" },
 	callback = function()
+		vim.o.textwidth = 120
+		vim.opt.colorcolumn = "-40,-20,120"
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "javascript", "typescript", "markdown", "yaml", "toml", "json", "text" },
+	callback = function()
+		vim.opt.iskeyword = "@,48-57,192-255"
 		vim.opt.tabstop = 2
 		vim.opt.shiftwidth = 2
 		vim.opt.expandtab = true
