@@ -101,7 +101,6 @@ return {
 						workspace = {
 							library = {
 								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
-								[vim.fn.expand("$VIMRUNTIME/lua")] = true,
 								[vim.fn.stdpath("config")] = true,
 								[vim.fn.stdpath("data") .. "/lazy" .. "/nvim-cmp"] = true,
 								[vim.fn.stdpath("data") .. "/lazy" .. "/cmp-nvim-lsp"] = true,

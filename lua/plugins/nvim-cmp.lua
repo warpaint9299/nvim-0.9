@@ -20,7 +20,6 @@ return {
 		},
 		config = function()
 			local cmp = require("cmp")
-
 			vim.cmd([[let g:vsnip_snippet_dir = stdpath("config") .. "/snippets" ]])
 
 			-- Set configuration for specific filetype.
@@ -88,6 +87,8 @@ return {
 			vim.api.nvim_set_hl(0, "CmpItemKindKeyword", { bg = "NONE", fg = "#D4D4D4" })
 			vim.api.nvim_set_hl(0, "CmpItemKindProperty", { link = "CmpItemKindKeyword" })
 			vim.api.nvim_set_hl(0, "CmpItemKindUnit", { link = "CmpItemKindKeyword" })
+
+			vim.lsp.set_log_level("off")
 
 			cmp.setup({
 				enabled = function()
