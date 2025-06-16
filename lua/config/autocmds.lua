@@ -22,8 +22,10 @@ end
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "text", "markdown" },
 	callback = function()
-		vim.o.textwidth = 120
+		vim.opt.textwidth = 120
 		vim.opt.colorcolumn = "-40,-20,120"
+        vim.opt.spell = true
+        vim.opt.spelllang = "en_us,cjk"
 	end,
 })
 

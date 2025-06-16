@@ -26,7 +26,7 @@ return {
 					message = {
 						-- Messages shown by lsp servers
 						enabled = true,
-						view = "notify",
+						view = "mini",
 						opts = {},
 					},
 				},
